@@ -8,614 +8,677 @@
 <meta property="og:title" content="الزاوية الرابعة · The Fourth Corner">
 <meta property="og:description" content="لكل مثلث زاوية رابعة… نكتشفها لك.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#093C5D">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&amp;display=swap">
 <style>
-@font-face{font-family:"Redaction 10";src:url("https://cdn.jsdelivr.net/npm/@fontsource/redaction-10@5.3.0/files/redaction-10-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
-@font-face{font-family:"Redaction 10";src:url("https://cdn.jsdelivr.net/npm/@fontsource/redaction-10@5.3.0/files/redaction-10-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
-@font-face{font-family:"Redaction 10";src:url("https://cdn.jsdelivr.net/npm/@fontsource/redaction-10@5.3.0/files/redaction-10-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal}
-body{margin:0;background:#F8F3EC}
-a{color:#053B2D}a:hover{color:#941704}
-html{scroll-behavior:smooth}
-.fa-logo-red{-webkit-mask:url("logo.svg") no-repeat center/contain;mask:url("logo.svg") no-repeat center/contain;background-color:#053B2D}
-.fa-logo-cream{-webkit-mask:url("logo.svg") no-repeat center/contain;mask:url("logo.svg") no-repeat center/contain;background-color:#F8F3EC}
-.fa-gem{display:inline-block;flex:none;clip-path:polygon(50% 0%,100% 74%,50% 100%,0% 74%)}
-@keyframes fa-marquee{from{transform:translateX(0)}to{transform:translateX(50%)}}
-@keyframes fa-blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
-@keyframes fa-spin{0%,100%{transform:rotate(0deg) translateY(0)}50%{transform:rotate(8deg) translateY(-10px)}}
-.fa-marquee{animation:fa-marquee 40s linear infinite}
-.fa-blink{animation:fa-blink 1.8s ease-in-out infinite}
-.fa-drift{animation:fa-spin 7s ease-in-out infinite}
-.fa-btn{transition:background-color .5s cubic-bezier(.2,.7,.2,1),color .5s cubic-bezier(.2,.7,.2,1),border-color .5s}
-.fa-roll{display:inline-flex;flex-direction:column;height:1.6em;line-height:1.6em;overflow:hidden;vertical-align:middle}
-.fa-roll>span{display:block;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
-.fa-btn:hover .fa-roll>span{transform:translateY(-100%)}
-.fa-btn-red:hover{background-color:#941704 !important;color:#F8F3EC !important;border-color:#941704 !important}
-.fa-btn-line:hover{background-color:#053B2D !important;color:#F8F3EC !important;border-color:#053B2D !important}
-.fa-btn-cream:hover{background-color:#941704 !important;color:#F8F3EC !important;border-color:#941704 !important}
-.fa-btn-ghost:hover{background-color:#F8F3EC !important;color:#053B2D !important;border-color:#F8F3EC !important}
-.fa-link{border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .4s}
-.fa-link:hover{border-bottom-color:#053B2D}
-.fa-row{transition:background-color .55s cubic-bezier(.2,.7,.2,1),color .55s cubic-bezier(.2,.7,.2,1)}
-.fa-row:hover{background-color:#053B2D !important;color:#F8F3EC !important}
-.fa-row:hover .fa-row-muted{color:#F1E4DF !important}
-.fa-row:hover .fa-row-num{color:#ADC6E4 !important}
-.fa-row .fa-arrow{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
-.fa-row:hover .fa-arrow{transform:translateX(-10px) rotate(-25.6deg)}
-.fa-cell{transition:background-color .5s cubic-bezier(.2,.7,.2,1)}
-.fa-cell:hover{background-color:rgba(148,23,4,0.05)}
-.fa-gemrow>span{transition:opacity .4s,transform .4s cubic-bezier(.2,.7,.2,1)}
-/* المثلث والزاوية الرابعة */
-.fa-tri{position:relative;outline:none;cursor:pointer}
-.fa-tri .fa-tri-shape{transition:fill .7s cubic-bezier(.2,.7,.2,1)}
-.fa-tri .fa-corner{transform-origin:200px 316px;transform:scaleY(0);transition:transform .75s cubic-bezier(.2,.9,.25,1.2)}
-.fa-tri .fa-four{opacity:0;transition:opacity .5s .35s}
-.fa-tri .fa-spark{position:absolute;left:50%;top:92%;opacity:0;transform:translate(-50%,-50%) scale(.2);transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .5s}
-.fa-tri:hover .fa-tri-shape,.fa-tri:focus .fa-tri-shape,.fa-tri.fa-on .fa-tri-shape{fill:#053B2D}
-.fa-tri:hover .fa-corner,.fa-tri:focus .fa-corner,.fa-tri.fa-on .fa-corner{transform:scaleY(1)}
-.fa-tri:hover .fa-four,.fa-tri:focus .fa-four,.fa-tri.fa-on .fa-four{opacity:1}
-.fa-tri:hover .fa-spark,.fa-tri:focus .fa-spark,.fa-tri.fa-on .fa-spark{opacity:1}
-.fa-tri:hover .fa-s1,.fa-tri:focus .fa-s1,.fa-tri.fa-on .fa-s1{transform:translate(calc(-50% - 130px),calc(-50% + 4px)) rotate(-20deg) scale(1);transition-delay:.15s}
-.fa-tri:hover .fa-s2,.fa-tri:focus .fa-s2,.fa-tri.fa-on .fa-s2{transform:translate(calc(-50% + 120px),calc(-50% - 14px)) rotate(18deg) scale(1);transition-delay:.2s}
-.fa-tri:hover .fa-s3,.fa-tri:focus .fa-s3,.fa-tri.fa-on .fa-s3{transform:translate(calc(-50% - 70px),calc(-50% + 44px)) rotate(10deg) scale(1);transition-delay:.25s}
-.fa-tri:hover .fa-s4,.fa-tri:focus .fa-s4,.fa-tri.fa-on .fa-s4{transform:translate(calc(-50% + 76px),calc(-50% + 40px)) rotate(-12deg) scale(1);transition-delay:.3s}
-.fa-tri:hover .fa-s5,.fa-tri:focus .fa-s5,.fa-tri.fa-on .fa-s5{transform:translate(calc(-50% - 170px),calc(-50% - 70px)) rotate(25deg) scale(1);transition-delay:.35s}
-.fa-tri:hover .fa-s6,.fa-tri:focus .fa-s6,.fa-tri.fa-on .fa-s6{transform:translate(calc(-50% + 165px),calc(-50% - 96px)) rotate(-25deg) scale(1);transition-delay:.4s}
-.fa-tri:hover .fa-s7,.fa-tri:focus .fa-s7,.fa-tri.fa-on .fa-s7{transform:translate(-50%,calc(-50% + 64px)) rotate(0deg) scale(1);transition-delay:.45s}
-.fa-hero-art{display:block}
-@media (max-width:1100px){.fa-hero-art{display:none}}
-@media (prefers-reduced-motion:reduce){.fa-marquee,.fa-blink,.fa-drift{animation:none}html{scroll-behavior:auto}}
+@font-face{font-family:"Redaction 10";src:url("https://cdn.jsdelivr.net/npm/@fontsource/redaction-10@5.3.0/files/redaction-10-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Redaction 10";src:url("https://cdn.jsdelivr.net/npm/@fontsource/redaction-10@5.3.0/files/redaction-10-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Redaction 10";src:url("https://cdn.jsdelivr.net/npm/@fontsource/redaction-10@5.3.0/files/redaction-10-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 
-html.js .rv{opacity:0;transform:translateY(40px)}
+:root{
+  --navy:#093C5D; --blue:#3B7597; --aqua:#6FD1D7; --mint:#5DF8D8;
+  --deep:#06263C; --ink:#093C5D; --muted:#33688A;
+  --paper:#F2F1EC; --paper-2:#E8E7E0; --line:rgba(9,60,93,.14);
+  --ar:"Readex Pro","Noto Sans Arabic",system-ui,sans-serif;
+  --lat:"Redaction 10",Georgia,serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ar);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img,svg{display:block}
+.lat{font-family:var(--lat);direction:ltr;unicode-bidi:isolate}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.gem{display:inline-block;flex:none;clip-path:polygon(50% 0%,100% 74%,50% 100%,0% 74%)}
+
+/* eyebrow */
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;letter-spacing:.02em;color:var(--muted)}
+.eyebrow .gem{width:10px;height:12px;background:var(--aqua)}
+.on-dark .eyebrow{color:var(--aqua)}
+.on-dark .eyebrow .gem{background:var(--mint)}
+
+/* headings in sawt style: light display + bold last line */
+.display{margin:0;font-weight:300;line-height:1.18;letter-spacing:-.01em}
+.display b{font-weight:600}
+.h2{font-size:clamp(34px,4.6vw,60px)}
+
+/* buttons */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font:500 15px/1 var(--ar);text-decoration:none;border:1px solid transparent;transition:background-color .45s var(--ease),color .45s var(--ease),border-color .45s,transform .45s var(--ease)}
+.btn .arr{transition:transform .45s var(--ease)}
+.btn:hover .arr{transform:translateX(-5px)}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:var(--mint)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--blue)}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+/* reveal */
+html.js .rv{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 html.js .rv.in{opacity:1;transform:none}
-.rv{transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1)}
+
+/* ───────── nav (floating pill) ───────── */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:6px;padding:6px;border-radius:14px;background:rgba(6,38,60,.62);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(111,209,215,.18);box-shadow:0 10px 30px rgba(6,38,60,.18)}
+.nav .mark{width:40px;height:40px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.06)}
+.nav a.lnk{color:#E6F6F7;text-decoration:none;font-size:14px;padding:10px 14px;border-radius:9px;transition:background-color .3s}
+.nav a.lnk:hover{background:rgba(255,255,255,.1)}
+.nav .btn{min-height:40px;border-radius:9px;padding:0 16px;font-size:14px}
+@media (max-width:640px){.nav a.lnk{display:none}}
+
+/* logo (mask) */
+.logo{display:block;-webkit-mask:url("logo.svg") no-repeat center/contain;mask:url("logo.svg") no-repeat center/contain;background:currentColor}
+
+/* striped diamond mark (like sawt's line logo, in our gem) */
+.mark-svg line{stroke:var(--mint);stroke-width:1.6;stroke-linecap:round}
+
+/* ───────── hero ───────── */
+.hero{position:relative;min-height:100vh;min-height:100svh;background:var(--deep);color:#fff;overflow:hidden;display:flex;flex-direction:column}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(58% 62% at 50% 50%,rgba(6,38,60,.97),rgba(6,38,60,.82) 55%,rgba(6,38,60,.35) 88%);pointer-events:none}
+.hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px clamp(20px,4vw,48px) 60px;gap:26px}
+.hero h1{font-size:clamp(44px,7vw,96px);max-width:1000px}
+.hero h1 .accent{color:var(--mint);font-weight:500}
+.hero p{margin:0;max-width:560px;font-size:clamp(16px,1.6vw,19px);line-height:1.85;font-weight:400;color:#fff;text-shadow:0 1px 14px rgba(6,38,60,1)}
+.hero .badge{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid rgba(111,209,215,.35);font-size:13px;color:var(--aqua);background:rgba(6,38,60,.4)}
+.hero .badge .gem{width:9px;height:11px;background:var(--mint);animation:blink 1.8s ease-in-out infinite}
+@keyframes blink{50%{opacity:.3;transform:scale(.7)}}
+.hero-strip{position:relative;z-index:2;background:rgba(6,38,60,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(111,209,215,.18);display:flex;align-items:center;gap:32px;padding:18px clamp(20px,4vw,48px);overflow:hidden}
+.hero-strip .lbl{flex:none;font-size:13px;color:#E6F6F7;max-width:220px;line-height:1.6}
+.marq{flex:1;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq-in{display:flex;width:max-content;gap:48px;align-items:center;animation:marq 38s linear infinite;font-family:var(--lat);font-style:italic;font-size:20px;color:#E6F6F7;direction:ltr}
+.marq-in .gem{width:8px;height:10px;background:var(--aqua)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ───────── section shell ───────── */
+section{position:relative}
+.sec{padding:clamp(80px,10vw,140px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px 64px;align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+.sec-head .lead{margin:0;font-size:17px;line-height:1.9;font-weight:300;color:var(--muted)}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+
+/* ───────── operating diagram ───────── */
+.diagram{position:relative;border-radius:22px;background:#F7F6F2;border:1px solid var(--line);padding:clamp(18px,3vw,36px);overflow:hidden}
+.diagram .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px;opacity:.45;mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent)}
+.dg{position:relative;display:grid;grid-template-columns:1fr 1fr 150px 1fr 1fr;align-items:center;gap:0 10px;min-height:440px}
+.dg-col{display:flex;flex-direction:column;gap:22px;z-index:2}
+.dg-cap{font-size:11px;letter-spacing:.08em;color:var(--blue);margin-bottom:4px}
+.chip{display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:999px;font-size:13.5px;white-space:nowrap;background:#fff;border:1px solid var(--line);color:var(--navy);transition:border-color .4s,background-color .4s,transform .4s var(--ease)}
+.chip .gem{width:8px;height:10px;background:var(--aqua)}
+.chip.src{border-color:rgba(59,117,151,.35)}
+.chip.out{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip.out .gem{background:var(--mint)}
+.chip.tag{height:32px;font-size:12.5px;background:#EAF7F7;border-color:rgba(111,209,215,.6);justify-content:center}
+.chip.pulse{border-color:var(--aqua);transform:scale(1.04)}
+.chip.out.pulse{background:var(--blue)}
+.dg-hub{z-index:2;justify-self:center;width:130px;height:130px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(111,209,215,.12),0 0 0 26px rgba(111,209,215,.06)}
+.dg-hub svg line{stroke:var(--navy);stroke-width:1.7;stroke-linecap:round}
+.dg svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:visible}
+.wires path{fill:none;stroke:rgba(59,117,151,.35);stroke-width:1.2}
+.wires circle{fill:var(--blue)}
+.wires circle.m{fill:#1fc7b0}
+.dg-mobile{display:none}
+@media (max-width:980px){.dg{display:none}.dg-mobile{display:grid;gap:14px;position:relative;z-index:2}.dg-mobile .row{display:flex;flex-wrap:wrap;gap:8px}.dg-mobile .arrow{font-size:13px;color:var(--blue);display:flex;align-items:center;gap:8px}}
+
+/* ───────── orbit (dark) ───────── */
+.dark{background:var(--deep);color:#fff}
+.dark .lead{color:#A9D5DA}
+.orbit-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:900px){.orbit-wrap{grid-template-columns:1fr}}
+.orbit{position:relative;width:min(100%,520px);aspect-ratio:1;justify-self:center}
+.orbit svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.orbit .ring{fill:none;stroke:rgba(111,209,215,.22);stroke-width:1}
+.orbit .arc{fill:none;stroke:var(--mint);stroke-width:2;stroke-linecap:round;transition:stroke-dashoffset 1.2s var(--ease)}
+.orbit .core{position:absolute;inset:36%;display:grid;place-items:center}
+.orbit .node{position:absolute;transform:translate(-50%,-50%);text-align:center;width:150px;transition:opacity .5s}
+.orbit .node i{display:block;margin:0 auto 10px;width:12px;height:14px;background:rgba(111,209,215,.5);clip-path:polygon(50% 0%,100% 74%,50% 100%,0% 74%);transition:background-color .5s,transform .5s var(--ease)}
+.orbit .node small{display:block;font-family:var(--lat);font-size:12px;color:#7FB6C8;margin-bottom:4px}
+.orbit .node span{font-size:16px;font-weight:500;color:#cfe7ea;transition:color .5s}
+.orbit .node.on i{background:var(--mint);transform:scale(1.6)}
+.orbit .node.on span{color:#fff}
+.steps{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(111,209,215,.18)}
+.step{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid rgba(111,209,215,.18);cursor:pointer;opacity:.5;transition:opacity .5s}
+.step.on{opacity:1}
+.step .n{font-family:var(--lat);font-size:30px;color:var(--mint);line-height:1}
+.step h3{margin:0 0 6px;font-size:22px;font-weight:500}
+.step p{margin:0;color:#A9D5DA;font-weight:300;line-height:1.8;font-size:15px}
+.step .bar{grid-column:2;height:2px;background:rgba(111,209,215,.15);margin-top:14px;overflow:hidden}
+.step .bar i{display:block;height:100%;width:0;background:var(--mint)}
+.step.on .bar i{animation:fill 4s linear forwards}
+@keyframes fill{to{width:100%}}
+
+/* ───────── results ───────── */
+.res-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.card{position:relative;border-radius:20px;background:#fff;border:1px solid var(--line);padding:clamp(22px,2.6vw,32px);overflow:hidden;display:flex;flex-direction:column;gap:14px}
+.card .k{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.card .k .gem{width:8px;height:10px;background:var(--aqua)}
+.num{font-family:var(--lat);font-weight:400;line-height:.95;letter-spacing:-.02em;direction:ltr;text-align:right}
+.card .num{font-size:clamp(64px,7vw,104px)}
+.card .num small{font-family:var(--ar);font-size:.28em;font-weight:500;margin-inline-start:8px;letter-spacing:0}
+.card .d{margin:0;font-size:15px;line-height:1.75;color:var(--muted);font-weight:300}
+.c-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.c-navy .k,.c-navy .d{color:#B5DDE2}
+.c-navy .k .gem{background:var(--mint)}
+.c-mint{background:var(--mint);border-color:var(--mint)}
+.c-mint .k,.c-mint .d{color:#0b4a5f}
+.c-mint .k .gem{background:var(--navy)}
+.c-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.c-blue .k,.c-blue .d{color:#DDF2F4}
+.c-blue .k .gem{background:var(--mint)}
+.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}.span-7{grid-column:span 7}.span-6{grid-column:span 6}
+@media (max-width:980px){.res-grid>*{grid-column:span 12 !important}}
+.gems{display:flex;flex-wrap:wrap;gap:6px;direction:ltr;margin-top:auto}
+.gems span{width:12px;height:15px;background:rgba(255,255,255,.25);clip-path:polygon(50% 0%,100% 74%,50% 100%,0% 74%);transition:background-color .35s}
+.gems span.lit{background:#fff}
+.gems span.lit.x{background:var(--mint)}
+.legend{font-size:12.5px;color:#B5DDE2;display:flex;gap:16px;flex-wrap:wrap}
+.legend b{font-weight:500;color:#fff}
+.chart{margin-top:auto;direction:ltr}
+.chart path.l{fill:none;stroke:var(--navy);stroke-width:2.5;stroke-linejoin:round}
+.chart path.a{fill:url(#ga)}
+.chart line{stroke:rgba(9,60,93,.12)}
+.chart text{font-family:var(--lat);font-size:13px;fill:var(--navy)}
+.terms{display:flex;flex-direction:column;gap:12px;margin-top:auto}
+.term{display:grid;grid-template-columns:28px 1fr 74px;gap:10px;align-items:center;font-size:13px}
+.term .p{font-family:var(--lat);border:1px solid rgba(9,60,93,.4);border-radius:6px;text-align:center;padding:1px 0}
+.term .t{height:6px;border-radius:6px;background:rgba(9,60,93,.12);overflow:hidden}
+.term .t i{display:block;height:100%;width:0;background:var(--navy);border-radius:6px;transition:width 1.6s var(--ease)}
+.term .v{font-family:var(--lat);text-align:left;direction:ltr}
+
+/* ───────── services accordion (sawt "Built here") ───────── */
+.acc{display:flex;gap:12px;height:480px}
+.acc-item{position:relative;flex:0 0 76px;border-radius:20px;background:var(--paper-2);border:1px solid var(--line);overflow:hidden;cursor:pointer;transition:flex-basis .8s var(--ease),background-color .6s,color .6s;outline:none}
+.acc-item.on{flex:1 1 auto;background:var(--navy);color:#fff;cursor:default}
+.acc-item:focus-visible{box-shadow:0 0 0 3px var(--aqua)}
+.acc-item .vt{position:absolute;bottom:24px;right:50%;transform:translateX(50%);writing-mode:vertical-rl;font-size:16px;font-weight:500;white-space:nowrap;transition:opacity .4s}
+.acc-item.on .vt{opacity:0}
+.acc-item .body{position:absolute;inset:0;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px;opacity:0;transform:translateY(16px);transition:opacity .5s .25s,transform .6s .25s var(--ease);min-width:420px}
+.acc-item.on .body{opacity:1;transform:none}
+.acc-item .body .n{font-family:var(--lat);font-size:15px;color:var(--mint)}
+.acc-item .body h3{margin:0;font-size:clamp(26px,3vw,38px);font-weight:400}
+.acc-item .body p{margin:0;max-width:520px;color:#B5DDE2;line-height:1.9;font-weight:300}
+.acc-item .tags{display:flex;flex-wrap:wrap;gap:8px}
+.acc-item .tags span{padding:7px 12px;border-radius:999px;font-size:13px;border:1px solid rgba(111,209,215,.4);color:#E6F6F7}
+.acc-item .mk{margin-top:auto;align-self:flex-end}
+.acc-item .mk line{stroke:var(--mint);stroke-width:1.6;stroke-linecap:round}
+@media (max-width:860px){.acc{flex-direction:column;height:auto}.acc-item{flex:none;min-height:64px}.acc-item.on{flex:none}.acc-item .vt{writing-mode:horizontal-tb;bottom:auto;top:20px;right:24px;transform:none}.acc-item .body{position:relative;min-width:0;display:none}.acc-item.on .body{display:flex}}
+
+/* ───────── triangle (about) ───────── */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+.about h2{font-size:clamp(38px,5vw,68px)}
+.about h2 b{color:var(--blue)}
+.tri{position:relative;width:min(100%,420px);aspect-ratio:1;justify-self:center;cursor:pointer;outline:none}
+.tri svg{width:100%;height:100%;overflow:visible}
+.tri .shape{transition:fill .7s var(--ease)}
+.tri .corner{transform-origin:200px 316px;transform:scaleY(0);transition:transform .75s cubic-bezier(.2,.9,.25,1.2)}
+.tri .four{opacity:0;transition:opacity .5s .35s}
+.tri .sp{position:absolute;left:50%;top:92%;opacity:0;transform:translate(-50%,-50%) scale(.2);transition:transform .9s var(--ease),opacity .5s}
+.tri:hover .shape,.tri:focus .shape,.tri.on .shape{fill:var(--navy)}
+.tri:hover .corner,.tri:focus .corner,.tri.on .corner{transform:scaleY(1)}
+.tri:hover .four,.tri:focus .four,.tri.on .four{opacity:1}
+.tri:hover .sp,.tri:focus .sp,.tri.on .sp{opacity:1}
+.tri:hover .s1,.tri:focus .s1,.tri.on .s1{transform:translate(calc(-50% - 140px),calc(-50% + 4px)) rotate(-20deg) scale(1);transition-delay:.15s}
+.tri:hover .s2,.tri:focus .s2,.tri.on .s2{transform:translate(calc(-50% + 130px),calc(-50% - 14px)) rotate(18deg) scale(1);transition-delay:.2s}
+.tri:hover .s3,.tri:focus .s3,.tri.on .s3{transform:translate(calc(-50% - 76px),calc(-50% + 44px)) rotate(10deg) scale(1);transition-delay:.25s}
+.tri:hover .s4,.tri:focus .s4,.tri.on .s4{transform:translate(calc(-50% + 80px),calc(-50% + 40px)) rotate(-12deg) scale(1);transition-delay:.3s}
+.tri:hover .s5,.tri:focus .s5,.tri.on .s5{transform:translate(calc(-50% - 180px),calc(-50% - 74px)) rotate(25deg) scale(1);transition-delay:.35s}
+.tri:hover .s6,.tri:focus .s6,.tri.on .s6{transform:translate(calc(-50% + 175px),calc(-50% - 100px)) rotate(-25deg) scale(1);transition-delay:.4s}
+
+/* ───────── CTA blobs ───────── */
+.cta{position:relative;overflow:hidden;background:var(--deep);color:#fff;text-align:center}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.9;will-change:transform}
+.b1{width:max(60vw,420px);height:max(60vw,420px);max-width:820px;max-height:820px;background:var(--aqua);opacity:.6;left:-14%;top:-30%;animation:b1 18s ease-in-out infinite alternate}
+.b2{width:max(55vw,400px);height:max(55vw,400px);max-width:760px;max-height:760px;background:var(--blue);right:-12%;bottom:-40%;animation:b2 22s ease-in-out infinite alternate}
+.b3{width:max(34vw,260px);height:max(34vw,260px);max-width:480px;max-height:480px;background:var(--mint);left:38%;top:10%;opacity:.35;animation:b3 16s ease-in-out infinite alternate}
+.b4{width:max(40vw,300px);height:max(40vw,300px);max-width:560px;max-height:560px;background:#031a29;left:22%;bottom:-30%;animation:b2 20s ease-in-out infinite alternate-reverse}
+@keyframes b1{to{transform:translate(18%,22%) scale(1.15)}}
+@keyframes b2{to{transform:translate(-20%,-18%) scale(1.1)}}
+@keyframes b3{to{transform:translate(-40%,30%) scale(.8)}}
+.cta::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(45% 50% at 50% 50%,rgba(6,38,60,.72),rgba(6,38,60,0))}
+.cta-in{position:relative;z-index:2;padding:clamp(110px,14vw,190px) clamp(20px,4vw,48px);display:flex;flex-direction:column;align-items:center;gap:26px}
+.cta h2{font-size:clamp(40px,6vw,84px)}
+.cta .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* footer */
+footer{background:var(--deep);color:#CFE7EA;border-top:1px solid rgba(111,209,215,.16)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding-top:34px;padding-bottom:34px;font-size:14px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--mint)}
+
+/* cursor */
+.cur{position:fixed;top:0;left:0;width:16px;height:20px;background:var(--mint);mix-blend-mode:difference;pointer-events:none;z-index:60;opacity:0;transform:translate3d(-100px,-100px,0);transition:width .35s var(--ease),height .35s var(--ease),opacity .3s}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  html.js .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-<div id="fa-root" style="width: 100%; overflow: hidden; background: #F8F3EC; color: #053B2D; font-family: 'Readex Pro', 'Noto Sans Arabic', system-ui, sans-serif; direction: rtl; position: relative;">
 
-  <!-- مؤشر معيّن يعكس الألوان -->
-  <div data-ref="cursor" class="fa-gem" aria-hidden="true" style="position: fixed; top: 0; left: 0; width: 18px; height: 22px; background: #F8F3EC; mix-blend-mode: difference; pointer-events: none; z-index: 50; opacity: 0; transform: translate3d(-100px, -100px, 0); transition: width .35s cubic-bezier(.2,.7,.2,1), height .35s cubic-bezier(.2,.7,.2,1), opacity .3s;"></div>
+<div class="cur gem" aria-hidden="true"></div>
 
-  <!-- ═══ الشريط العلوي ═══ -->
-  <header style="border-bottom: 1px solid #E2D6C6; background: #F8F3EC;">
-    <nav style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between; gap: 0 24px; border-inline: 1px solid #E2D6C6; box-sizing: border-box;">
-      <a href="#top" aria-label="الزاوية الرابعة" style="display: flex; align-items: center; padding: 18px 0;">
-        <span class="fa-logo-red" role="img" aria-label="الزاوية الرابعة" style="display: block; width: 164px; height: 38px;"></span>
-      </a>
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; font-size: 15px; font-weight: 500; padding: 14px 0;">
-        <a class="fa-link" href="#results" style="text-decoration: none; color: #053B2D;">النتائج</a>
-        <a class="fa-link" href="#services" style="text-decoration: none; color: #053B2D;">الخدمات</a>
-        <a class="fa-link" href="#method" style="text-decoration: none; color: #053B2D;">كيف نعمل</a>
-        <a class="fa-btn fa-btn-red" href="#contact" style="text-decoration: none; background: #053B2D; color: #F8F3EC; border: 1px solid #053B2D; padding: 10px 22px; border-radius: 4px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px;"><span class="fa-roll"><span>احجز استشارة</span><span>احجز استشارة</span></span><span aria-hidden="true">←</span></a>
-      </div>
-    </nav>
-  </header>
+<!-- nav -->
+<nav class="nav" aria-label="القائمة الرئيسية">
+  <a href="#top" class="mark" aria-label="الزاوية الرابعة: الرئيسية">
+    <svg class="mark-svg" width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
+  </a>
+  <a class="lnk" href="#how">كيف نعمل</a>
+  <a class="lnk" href="#results">النتائج</a>
+  <a class="lnk" href="#services">الخدمات</a>
+  <a class="btn btn-light" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener">احجز استشارة <span class="arr" aria-hidden="true">←</span></a>
+</nav>
 
-  <!-- ═══ الواجهة ═══ -->
-  <section id="top" data-ref="hero" style="border-bottom: 1px solid #E2D6C6;">
-    <div style="max-width: 1280px; margin: 0 auto; border-inline: 1px solid #E2D6C6; box-sizing: border-box; position: relative; overflow: hidden;">
-      <!-- معيّن خطي يُرسم -->
-      <svg class="fa-hero-art" viewBox="0 0 400 440" aria-hidden="true" style="position: absolute; left: clamp(16px, 4vw, 64px); top: 64px; width: min(20%, 250px); height: auto;">
-        <polyline pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" data-a-stroke-dashoffset="hero.d1" points="200,20 380,330 200,420 20,330 200,20" fill="none" stroke="#053B2D" stroke-width="1.4"></polyline>
-        <polyline pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" data-a-stroke-dashoffset="hero.d2" points="200,90 320,300 200,360 80,300 200,90" fill="none" stroke="#053B2D" stroke-opacity="0.3" stroke-width="1"></polyline>
-        <g class="fa-drift" style="transform-origin: 200px 300px;">
-          <polygon points="200,250 236,312 200,330 164,312" fill="#ADC6E4" opacity="1" data-a-opacity="hero.fill"></polygon>
-        </g>
-      </svg>
-
-      <div data-rv="hero" class="rv" style="position: relative; padding: clamp(56px, 8vw, 112px) clamp(16px, 4vw, 48px) clamp(48px, 6vw, 80px); display: flex; flex-direction: column; gap: 32px; transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);">
-        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: #44544F;">
-          <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr; color: #941704;">[ 4° ]</span>
-          <span style="width: 40px; height: 1px; background: #E2D6C6;"></span>
-          <span>تسويق مبني على الأرقام</span>
-          <span class="fa-gem fa-blink" style="width: 9px; height: 11px; background: #941704;"></span>
-          <span>متاحون لمشاريع جديدة</span>
-        </div>
-        <h1 style="margin: 0; font-size: clamp(46px, 7.2vw, 100px); line-height: 1.14; font-weight: 700; color: #053B2D; max-width: 900px;">نخفّض <span style="color: #941704;">تكلفة عميلك…</span><br>ونرفع ظهورك.</h1>
-        <div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-end; justify-content: space-between; max-width: 900px;">
-          <p style="flex: 1 1 340px; margin: 0; font-size: 18px; line-height: 1.85; font-weight: 300; max-width: 500px;">زاويتان نتقنهما: إدارة الحملات الإعلانية وتحسين محركات البحث. كل قرار نأخذه مبني على الأرقام.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-            <a class="fa-btn fa-btn-red" href="#contact" style="text-decoration: none; background: #053B2D; color: #F8F3EC; border: 1px solid #053B2D; padding: 14px 28px; border-radius: 4px; font-weight: 600; font-size: 16px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px;"><span class="fa-roll"><span>احجز استشارة</span><span>احجز استشارة</span></span><span aria-hidden="true">←</span></a>
-            <a class="fa-btn fa-btn-line" href="#results" style="text-decoration: none; background: #F8F3EC; color: #053B2D; border: 1px solid #053B2D; padding: 14px 28px; border-radius: 4px; font-weight: 600; font-size: 16px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center;"><span class="fa-roll"><span>شوف النتائج</span><span>شوف النتائج</span></span></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- صف الأرقام -->
-      <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid #E2D6C6; background: #F8F3EC;">
-        <div class="fa-cell" style="padding: 28px clamp(16px, 3vw, 36px); border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-size: 12px; color: #44544F; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">[ 01 ]</span>
-          <span style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 700; line-height: 1; color: #053B2D; display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'Redaction 10', Georgia, serif;"><span data-k="hero.cpa">4</span></span><span style="font-size: 20px; font-weight: 600;">ريال</span></span>
-          <span style="font-size: 14px; color: #44544F;">تكلفة التحويل في قطاع شديد المنافسة</span>
-        </div>
-        <div class="fa-cell" style="padding: 28px clamp(16px, 3vw, 36px); border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-size: 12px; color: #44544F; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">[ 02 ]</span>
-          <span style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 700; line-height: 1; color: #053B2D; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">+<span data-k="hero.roas">40</span>%</span>
-          <span style="font-size: 14px; color: #44544F;">عائد إعلاني أعلى من متوسط السوق</span>
-        </div>
-        <div class="fa-cell" style="padding: 28px clamp(16px, 3vw, 36px); border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-size: 12px; color: #44544F; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">[ 03 ]</span>
-          <span style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 700; line-height: 1; color: #053B2D; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">+<span data-k="hero.sales">40</span>%</span>
-          <span style="font-size: 14px; color: #44544F;">زيادة في المبيعات عبر الحملات</span>
-        </div>
-        <div class="fa-cell" style="padding: 28px clamp(16px, 3vw, 36px); display: flex; flex-direction: column; gap: 8px;">
-          <span style="font-size: 12px; color: #44544F; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">[ 04 ]</span>
-          <span style="font-size: clamp(40px, 4.4vw, 60px); font-weight: 700; line-height: 1; color: #053B2D; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;"><span data-k="hero.kw">99K</span></span>
-          <span style="font-size: 14px; color: #44544F;">كلمة مفتاحية يظهر فيها الموقع</span>
-        </div>
+<!-- hero -->
+<header class="hero" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="hero-in">
+    <span class="logo" role="img" aria-label="الزاوية الرابعة" style="width:190px;height:44px;color:#fff"></span>
+    <span class="badge"><span class="gem"></span>متاحون لمشاريع جديدة</span>
+    <h1 class="display">نخفّض تكلفة عميلك،<br><b>ونرفع <span class="accent">ظهورك.</span></b></h1>
+    <p>زاويتان نتقنهما: إدارة الحملات الإعلانية وتحسين محركات البحث. كل قرار نأخذه مبني على الأرقام.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <a class="btn btn-light" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener">احجز استشارة <span class="arr" aria-hidden="true">←</span></a>
+      <a class="btn btn-ghost" href="#results">شوف النتائج</a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <span class="lbl">أدوات نشتغل عليها كل يوم لنقرأ السوق ونحرّك الأرقام</span>
+    <div class="marq" aria-hidden="true">
+      <div class="marq-in">
+        <span>Google Ads</span><i class="gem"></i><span>Meta Ads</span><i class="gem"></i><span>TikTok Ads</span><i class="gem"></i><span>Snapchat Ads</span><i class="gem"></i><span>Google Analytics</span><i class="gem"></i><span>Search Console</span><i class="gem"></i><span>Semrush</span><i class="gem"></i><span>PageSpeed</span><i class="gem"></i>
+        <span>Google Ads</span><i class="gem"></i><span>Meta Ads</span><i class="gem"></i><span>TikTok Ads</span><i class="gem"></i><span>Snapchat Ads</span><i class="gem"></i><span>Google Analytics</span><i class="gem"></i><span>Search Console</span><i class="gem"></i><span>Semrush</span><i class="gem"></i><span>PageSpeed</span><i class="gem"></i>
       </div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- ═══ شريط الأدوات ═══ -->
-  <section aria-label="أدواتنا" style="background: #053B2D; color: #F8F3EC; overflow: hidden;">
-    <div style="padding: 20px 0; overflow: hidden;">
-      <div class="fa-marquee" style="display: flex; width: max-content; gap: 44px; font-family: 'Redaction 10', Georgia, serif; font-style: italic; font-size: 21px; white-space: nowrap; direction: ltr; align-items: center;">
-        <span>Google Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Meta Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>TikTok Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Snapchat Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Google Analytics</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Search Console</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Semrush</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span>
-        <span>Google Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Meta Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>TikTok Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Snapchat Ads</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Google Analytics</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Search Console</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span><span>Semrush</span><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span>
+<main>
+
+<!-- operating diagram -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span class="eyebrow"><span class="gem"></span>زاويتنا في العمل</span>
+        <h2 class="display h2">كل بيانات تملكها،<br><b>كل منصة يتواجد فيها عميلك.</b></h2>
+      </div>
+      <p class="lead">نقرأ بياناتك من مصادرها، نحدد الزاوية اللي تجيب العميل الصح، ثم نحرّك الحملات والمحتوى على كل منصة يتواجد فيها جمهورك.</p>
+    </div>
+
+    <div class="diagram rv">
+      <div class="grid-bg"></div>
+      <div class="dg" id="dg">
+        <svg class="wires" id="wires" aria-hidden="true"></svg>
+        <div class="dg-col" data-side="src">
+          <span class="dg-cap">البيانات</span>
+          <span class="chip src"><i class="gem"></i>Google Analytics</span>
+          <span class="chip src"><i class="gem"></i>Search Console</span>
+          <span class="chip src"><i class="gem"></i>Semrush</span>
+          <span class="chip src"><i class="gem"></i>بيانات الحملات</span>
+          <span class="chip src"><i class="gem"></i>المنافسين</span>
+        </div>
+        <div class="dg-col" data-side="tag1">
+          <span class="dg-cap">&nbsp;</span>
+          <span class="chip tag">سلوك الزوار</span>
+          <span class="chip tag">فرص الكلمات</span>
+          <span class="chip tag">فجوات المحتوى</span>
+          <span class="chip tag">تكلفة التحويل</span>
+          <span class="chip tag">زوايا المنافسة</span>
+        </div>
+        <div class="dg-hub" id="hub" aria-hidden="true">
+          <svg width="58" height="68" viewBox="0 0 22 26"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
+        </div>
+        <div class="dg-col" data-side="tag2">
+          <span class="dg-cap">&nbsp;</span>
+          <span class="chip tag">رسائل إعلانية</span>
+          <span class="chip tag">استهداف دقيق</span>
+          <span class="chip tag">محتوى محسّن</span>
+          <span class="chip tag">صفحات أسرع</span>
+          <span class="chip tag">تقارير واضحة</span>
+        </div>
+        <div class="dg-col" data-side="out">
+          <span class="dg-cap">المنصات</span>
+          <span class="chip out"><i class="gem"></i>Google</span>
+          <span class="chip out"><i class="gem"></i>Meta</span>
+          <span class="chip out"><i class="gem"></i>TikTok</span>
+          <span class="chip out"><i class="gem"></i>Snapchat</span>
+          <span class="chip out"><i class="gem"></i>محركات البحث</span>
+        </div>
+      </div>
+      <div class="dg-mobile">
+        <span class="dg-cap">البيانات</span>
+        <div class="row"><span class="chip src"><i class="gem"></i>Google Analytics</span><span class="chip src"><i class="gem"></i>Search Console</span><span class="chip src"><i class="gem"></i>Semrush</span><span class="chip src"><i class="gem"></i>بيانات الحملات</span></div>
+        <span class="arrow"><i class="gem" style="width:9px;height:11px;background:var(--aqua)"></i>نحدد الزاوية</span>
+        <span class="dg-cap">المنصات</span>
+        <div class="row"><span class="chip out"><i class="gem"></i>Google</span><span class="chip out"><i class="gem"></i>Meta</span><span class="chip out"><i class="gem"></i>TikTok</span><span class="chip out"><i class="gem"></i>Snapchat</span><span class="chip out"><i class="gem"></i>محركات البحث</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ من نحن: المثلث والزاوية الرابعة ═══ -->
-  <section data-ref="about" style="border-bottom: 1px solid #E2D6C6;">
-    <div style="position: relative; max-width: 1280px; margin: 0 auto; border-inline: 1px solid #E2D6C6; box-sizing: border-box; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 48px) clamp(64px, 8vw, 112px); display: flex; flex-direction: column; align-items: center; gap: 36px; background: rgba(173,198,228,0.14);">
-        <div style="align-self: stretch; display: flex; align-items: center; gap: 10px; font-size: 13px; color: #44544F;">
-          <span class="fa-gem" style="width: 9px; height: 11px; background: #941704;"></span>
-          <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr;">[ 00 ]</span>
-          <span>من نحن</span>
-        </div>
-        <h2 data-ref="aboutText" style="margin: 0; position: relative; z-index: 2; display: inline-block; text-align: center; font-size: clamp(38px, 5vw, 68px); line-height: 1.25; font-weight: 700; color: #053B2D; transform-origin: 50% 50%; will-change: transform;">لكل مثلث <span style="color: #941704;">زاوية رابعة…</span><br>نكتشفها لك!</h2>
-        <div data-ref="aboutTri" class="fa-tri" tabindex="0" role="img" aria-label="مثلث تظهر له زاوية رابعة عند المرور عليه" style="width: min(100%, 380px); aspect-ratio: 1 / 1;">
-          <svg viewBox="0 0 400 400" width="100%" height="100%" style="display: block; overflow: visible;">
-            <polygon class="fa-corner" points="360,316 200,372 40,316" fill="#941704" stroke="#941704" stroke-width="2" stroke-linejoin="round"></polygon>
-            <polygon class="fa-tri-shape" points="200,40 360,316 40,316" fill="rgba(5,59,45,0.06)" stroke="#053B2D" stroke-width="2" stroke-linejoin="round"></polygon>
-            <text class="fa-four" x="200" y="300" text-anchor="middle" fill="#F8F3EC" font-family="Redaction 10, Georgia, serif" font-size="64" font-weight="700">4°</text>
-          </svg>
-          <span class="fa-gem fa-spark fa-s1" style="width: 16px; height: 20px; background: #941704;"></span>
-          <span class="fa-gem fa-spark fa-s2" style="width: 12px; height: 15px; background: #053B2D;"></span>
-          <span class="fa-gem fa-spark fa-s3" style="width: 10px; height: 12px; background: #ADC6E4;"></span>
-          <span class="fa-gem fa-spark fa-s4" style="width: 14px; height: 17px; background: #941704;"></span>
-          <span class="fa-gem fa-spark fa-s5" style="width: 9px; height: 11px; background: #053B2D;"></span>
-          <span class="fa-gem fa-spark fa-s6" style="width: 13px; height: 16px; background: #ADC6E4;"></span>
-          <span class="fa-gem fa-spark fa-s7" style="width: 11px; height: 14px; background: #941704;"></span>
-        </div>
-    </div>
-  </section>
-
-  <!-- ═══ النتائج ═══ -->
-  <section id="results" data-ref="res" style="border-bottom: 1px solid #E2D6C6;">
-    <div style="max-width: 1280px; margin: 0 auto; border-inline: 1px solid #E2D6C6; box-sizing: border-box; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: 40px;">
-      <div data-rv="res" class="rv" style="display: flex; flex-wrap: wrap; gap: 20px 48px; align-items: flex-end; justify-content: space-between; transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);">
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #44544F;">
-            <span class="fa-gem" style="width: 9px; height: 11px; background: #941704;"></span>
-            <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr;">[ 01 ]</span>
-            <span>النتائج</span>
-          </div>
-          <h2 style="margin: 0; font-size: clamp(36px, 4.8vw, 64px); line-height: 1.2; font-weight: 700; color: #053B2D;">أرقام، <span style="color: #941704;">لا وعود.</span></h2>
-        </div>
-        <p style="margin: 0; font-size: 16px; line-height: 1.85; font-weight: 300; max-width: 420px;">حملات إعلانية في قطاع شديد المنافسة، وتحسين محركات البحث لموقع خدمي واسع الانتشار.</p>
+<!-- orbit: method -->
+<section class="sec dark on-dark" id="method">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span class="eyebrow"><span class="gem"></span>كيف نعمل</span>
+        <h2 class="display h2">أربع خطوات،<br><b>دورة لا تتوقف.</b></h2>
       </div>
+      <p class="lead">كل حملة تعلّمنا شي جديد. نقيس، نحسّن، ونرجع نبدأ الدورة بزاوية أدق.</p>
+    </div>
+    <div class="orbit-wrap">
+      <div class="orbit rv" id="orbit" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <circle class="ring" cx="200" cy="200" r="150"/>
+          <circle class="ring" cx="200" cy="200" r="182" stroke-dasharray="2 6"/>
+          <circle class="arc" id="arc" cx="200" cy="200" r="150" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 200 200)"/>
+        </svg>
+        <div class="core"><svg width="70" height="82" viewBox="0 0 22 26" class="mark-svg"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg></div>
+        <div class="node" style="left:50%;top:12.5%"><i></i><small>01</small><span>نفهم</span></div>
+        <div class="node" style="left:87.5%;top:50%"><i></i><small>02</small><span>نحدد الزاوية</span></div>
+        <div class="node" style="left:50%;top:87.5%"><i></i><small>03</small><span>ننفّذ</span></div>
+        <div class="node" style="left:12.5%;top:50%"><i></i><small>04</small><span>نقيس ونحسّن</span></div>
+      </div>
+      <div class="steps rv" id="steps">
+        <div class="step" tabindex="0"><span class="n">01</span><div><h3>نفهم</h3><p>العلامة والجمهور والمنافسين، وأين يضيع العميل اليوم.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">02</span><div><h3>نحدد الزاوية</h3><p>الرسائل والكلمات اللي تجيب العميل الصح، بتكلفة أقل.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">03</span><div><h3>ننفّذ</h3><p>الحملات على كل منصة، وتحسينات الموقع والمحتوى.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">04</span><div><h3>نقيس ونحسّن</h3><p>تقارير واضحة، وقرارات مبنية على الأرقام، ثم دورة جديدة.</p></div><span class="bar"><i></i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- لوحة الحملات: أولاً -->
-      <article data-ref="ads" style="background: #053B2D; color: #F8F3EC; display: flex; flex-direction: column;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 24px; border-bottom: 1px solid rgba(248,243,236,0.25); font-size: 13px;">
-          <span style="display: flex; align-items: center; gap: 8px;"><span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span>إدارة الحملات الإعلانية · قطاع التجزئة</span>
-          <span style="font-family: 'Redaction 10', Georgia, serif; font-style: italic; direction: ltr;">Google · Meta · TikTok · Snapchat</span>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));">
-          <div style="padding: 32px 24px; border-left: 1px solid rgba(248,243,236,0.25); display: flex; flex-direction: column; gap: 14px;">
-            <span style="font-size: 13px;">تكلفة التحويل</span>
-            <span style="display: flex; align-items: baseline; gap: 10px; line-height: 1;"><span style="font-size: clamp(80px, 9vw, 128px); font-weight: 700; font-family: 'Redaction 10', Georgia, serif;"><span data-k="ads.cpa">4</span></span><span style="font-size: 26px; font-weight: 600;">ريال</span></span>
-            <span style="font-size: 15px; line-height: 1.7;">لكل تحويل، في قطاع <strong style="font-weight: 600; color: #ADC6E4;">شديد المنافسة</strong></span>
-          </div>
-          <div style="padding: 32px 24px; border-left: 1px solid rgba(248,243,236,0.25); display: flex; flex-direction: column; gap: 18px;">
-            <span style="font-size: 13px;">العائد على الإنفاق الإعلاني <span style="font-family: 'Redaction 10', Georgia, serif;">ROAS</span></span>
-            <span style="font-size: clamp(52px, 6vw, 80px); font-weight: 700; line-height: 1; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">+<span data-k="ads.roas">40</span>%</span>
-            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
-              <div style="display: grid; grid-template-columns: 78px 1fr; align-items: center; gap: 10px;">
-                <span>متوسط السوق</span>
-                <div class="fa-gemrow" style="display: flex; gap: 5px; direction: ltr;"><span class="fa-gem" data-gem="mkt" data-i="0" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="1" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="2" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="3" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="4" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="5" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="6" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="7" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="8" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="mkt" data-i="9" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span></div>
-              </div>
-              <div style="display: grid; grid-template-columns: 78px 1fr; align-items: center; gap: 10px;">
-                <span style="font-weight: 600;">نتيجتنا</span>
-                <div class="fa-gemrow" style="display: flex; gap: 5px; direction: ltr;"><span class="fa-gem" data-gem="ours" data-i="0" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="1" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="2" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="3" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="4" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="5" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="6" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="7" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="8" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="9" style="width: 11px; height: 14px; background: #F8F3EC; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="10" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="11" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="12" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="ours" data-i="13" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span></div>
-              </div>
-            </div>
-          </div>
-          <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 18px;">
-            <span style="font-size: 13px;">نسبة المبيعات</span>
-            <span style="font-size: clamp(52px, 6vw, 80px); font-weight: 700; line-height: 1; font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: right;">+<span data-k="ads.sales">40</span>%</span>
-            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
-              <div class="fa-gemrow" style="display: flex; flex-wrap: wrap; gap: 5px; direction: ltr;"><span class="fa-gem" data-gem="sales" data-i="0" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="1" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="2" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="3" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="4" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="5" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="6" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="7" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="8" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="9" style="width: 11px; height: 14px; background: rgba(248,243,236,0.45); opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="10" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="11" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="12" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span><span class="fa-gem" data-gem="sales" data-i="13" style="width: 11px; height: 14px; background: #ADC6E4; opacity: 1; transition: opacity .3s;"></span></div>
-              <span>كل معيّن أزرق = 10% إضافية</span>
-            </div>
-          </div>
-        </div>
+<!-- results -->
+<section class="sec" id="results">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span class="eyebrow"><span class="gem"></span>النتائج</span>
+        <h2 class="display h2">أرقام،<br><b>لا وعود.</b></h2>
+      </div>
+      <p class="lead">حملات إعلانية في قطاع شديد المنافسة، وتحسين محركات البحث لموقع خدمي واسع الانتشار.</p>
+    </div>
+
+    <div class="res-grid">
+      <article class="card c-navy span-5 rv" data-count>
+        <span class="k"><i class="gem"></i>تكلفة التحويل · قطاع التجزئة</span>
+        <span class="num"><span data-from="24" data-to="4">4</span><small>ريال</small></span>
+        <p class="d">لكل تحويل، في قطاع شديد المنافسة.</p>
+      </article>
+      <article class="card c-blue span-4 rv" data-count>
+        <span class="k"><i class="gem"></i>العائد على الإنفاق <span class="lat">ROAS</span></span>
+        <span class="num">+<span data-from="0" data-to="40">40</span>%</span>
+        <div class="gems" data-gems="14" data-base="10"></div>
+        <span class="legend"><span>كل معيّن = 10%</span><span><b>المعيّن الفاتح</b> = فوق متوسط السوق</span></span>
+      </article>
+      <article class="card c-mint span-3 rv" data-count>
+        <span class="k"><i class="gem"></i>المبيعات</span>
+        <span class="num">+<span data-from="0" data-to="40">40</span>%</span>
+        <p class="d">زيادة في المبيعات عبر الحملات.</p>
       </article>
 
-      <!-- تحسين محركات البحث -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px;">
-        <article style="border: 1px solid #E2D6C6; background: #F8F3EC; display: flex; flex-direction: column;">
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid #E2D6C6; font-size: 13px;">
-            <span style="display: flex; align-items: center; gap: 8px;"><span class="fa-gem" style="width: 9px; height: 11px; background: #053B2D;"></span>الكلمات المفتاحية · تحسين محركات البحث</span>
-            <span style="font-family: 'Redaction 10', Georgia, serif; font-style: italic; color: #44544F; direction: ltr;">Semrush · Q1–Q4</span>
-          </div>
-          <div style="padding: 24px 20px 8px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px;">
-            <span style="font-size: clamp(52px, 6vw, 84px); font-weight: 700; line-height: 1; color: #053B2D; font-family: 'Redaction 10', Georgia, serif; direction: ltr;"><span data-k="res.kw">99K</span></span>
-            <span style="border: 1px solid #053B2D; color: #053B2D; padding: 6px 12px; font-size: 13px;">أعلى قيمة في الربع الرابع</span>
-          </div>
-          <figure style="margin: 0; padding: 8px 20px 20px; direction: ltr;" role="img" aria-label="الكلمات المفتاحية حسب الربع: 93 ألف، 72 ألف، 87 ألف، 99 ألف">
-            <svg viewBox="0 0 620 220" width="100%" height="auto" style="display: block; overflow: visible;">
-              <g stroke="#053B2D" stroke-opacity="0.12" stroke-width="1">
-                <line x1="0" y1="40" x2="620" y2="40"></line>
-                <line x1="0" y1="100" x2="620" y2="100"></line>
-                <line x1="0" y1="160" x2="620" y2="160"></line>
-                <line x1="0" y1="210" x2="620" y2="210" stroke-opacity="0.35"></line>
-              </g>
-              <polyline pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" data-a-stroke-dashoffset="res.line" points="40,75 220,155 400,98 580,53" fill="none" stroke="#053B2D" stroke-width="2.5" stroke-linejoin="round"></polyline>
-              <g opacity="1" data-a-opacity="res.dots" stroke-linejoin="round">
-                <polygon points="40,67 47,78 40,82 33,78" fill="#F8F3EC" stroke="#053B2D" stroke-width="2"></polygon>
-                <polygon points="220,147 227,158 220,162 213,158" fill="#F8F3EC" stroke="#053B2D" stroke-width="2"></polygon>
-                <polygon points="400,90 407,101 400,105 393,101" fill="#F8F3EC" stroke="#053B2D" stroke-width="2"></polygon>
-                <polygon points="580,40 591,58 580,63 569,58" fill="#ADC6E4" stroke="#053B2D" stroke-width="2"></polygon>
-              </g>
-              <g opacity="1" data-a-opacity="res.dots" fill="#053B2D" font-family="Redaction 10, Georgia, serif" font-size="15">
-                <text x="40" y="56" text-anchor="middle">93K</text>
-                <text x="220" y="186" text-anchor="middle">72K</text>
-                <text x="400" y="80" text-anchor="middle">87K</text>
-                <text x="580" y="30" text-anchor="middle" font-weight="700">99K</text>
-              </g>
-            </svg>
-            <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 10px; font-size: 12px; color: #44544F; font-family: 'Redaction 10', Georgia, serif; text-align: center;">
-              <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
-            </div>
-          </figure>
-        </article>
+      <article class="card span-7 rv" data-count>
+        <span class="k"><i class="gem"></i>الكلمات المفتاحية · <span class="lat">Semrush · Q1–Q4</span></span>
+        <span class="num"><span data-from="0" data-to="99">99</span>K</span>
+        <svg class="chart" viewBox="0 0 620 200" role="img" aria-label="الكلمات المفتاحية حسب الربع: 93 ألف، 72 ألف، 87 ألف، 99 ألف">
+          <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#6FD1D7" stop-opacity=".55"/><stop offset="1" stop-color="#6FD1D7" stop-opacity="0"/></linearGradient></defs>
+          <line x1="0" y1="40" x2="620" y2="40"/><line x1="0" y1="100" x2="620" y2="100"/><line x1="0" y1="160" x2="620" y2="160"/>
+          <path class="a" d="M40,75 C130,75 130,155 220,155 S310,98 400,98 S490,53 580,53 L580,190 L40,190 Z"/>
+          <path class="l" id="kwline" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" d="M40,75 C130,75 130,155 220,155 S310,98 400,98 S490,53 580,53"/>
+          <text x="40" y="58" text-anchor="middle">93K</text><text x="220" y="185" text-anchor="middle">72K</text><text x="400" y="80" text-anchor="middle">87K</text><text x="580" y="34" text-anchor="middle" font-weight="700">99K</text>
+          <polygon points="580,44 589,58 580,63 571,58" fill="#5DF8D8" stroke="#093C5D" stroke-width="1.5"/>
+        </svg>
+      </article>
+      <article class="card span-5 rv" data-count style="background:#E9F8F8;border-color:rgba(111,209,215,.6)">
+        <span class="k"><i class="gem"></i>الصفحة الأولى في قوقل · المركز #1</span>
+        <span class="num"><span data-from="0" data-to="1.56" data-dec="2">1.56</span>M</span>
+        <p class="d">زيارة من 5 مصطلحات في المركز الأول.</p>
+        <div class="terms" id="terms"></div>
+      </article>
 
-        <article style="background: #ADC6E4; color: #053B2D; display: flex; flex-direction: column;">
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid rgba(5,59,45,0.2); font-size: 13px;">
-            <span style="display: flex; align-items: center; gap: 8px;"><span class="fa-gem" style="width: 9px; height: 11px; background: #941704;"></span>الصفحة الأولى في قوقل</span>
-            <span style="font-family: 'Redaction 10', Georgia, serif; font-style: italic; direction: ltr;">Top 5 · Position #1</span>
-          </div>
-          <div style="padding: 24px 20px 8px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px;">
-            <span style="font-size: clamp(52px, 6vw, 84px); font-weight: 700; line-height: 1; font-family: 'Redaction 10', Georgia, serif; direction: ltr;"><span data-k="res.visits">1.56M</span></span>
-            <span style="font-size: 13px;">زيارة من 5 مصطلحات في المركز الأول</span>
-          </div>
-          <div style="padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 16px;">
-            
-              <div style="display: grid; grid-template-columns: 34px 1fr 88px; align-items: center; gap: 12px; font-size: 13px;">
-                <span style="border: 1px solid #053B2D; text-align: center; padding: 2px 0; font-family: 'Redaction 10', Georgia, serif;">#1</span>
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <span>مصطلح رئيسي 1</span>
-                  <div style="position: relative; height: 12px; display: flex; align-items: center;">
-                    <span style="position: absolute; right: 0; left: 0; height: 1px; background: rgba(5,59,45,0.2);"></span>
-                    <span style="position: absolute; right: 0; width: 92.0%;" data-term-bar="92.0 height: 2px; background: #053B2D;"></span>
-                    <span class="fa-gem" style="position: absolute; right: calc(92.0% - 6px);" data-term-gem="92.0 width: 12px; height: 12px; background: #941704;"></span>
-                  </div>
-                </div>
-                <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: left;"><span data-term-v="658400">658,400</span></span>
-              </div>
-            
-              <div style="display: grid; grid-template-columns: 34px 1fr 88px; align-items: center; gap: 12px; font-size: 13px;">
-                <span style="border: 1px solid #053B2D; text-align: center; padding: 2px 0; font-family: 'Redaction 10', Georgia, serif;">#1</span>
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <span>مصطلح رئيسي 2</span>
-                  <div style="position: relative; height: 12px; display: flex; align-items: center;">
-                    <span style="position: absolute; right: 0; left: 0; height: 1px; background: rgba(5,59,45,0.2);"></span>
-                    <span style="position: absolute; right: 0; width: 50.3%;" data-term-bar="50.3 height: 2px; background: #053B2D;"></span>
-                    <span class="fa-gem" style="position: absolute; right: calc(50.3% - 6px);" data-term-gem="50.3 width: 12px; height: 12px; background: #053B2D;"></span>
-                  </div>
-                </div>
-                <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: left;"><span data-term-v="360000">360,000</span></span>
-              </div>
-            
-              <div style="display: grid; grid-template-columns: 34px 1fr 88px; align-items: center; gap: 12px; font-size: 13px;">
-                <span style="border: 1px solid #053B2D; text-align: center; padding: 2px 0; font-family: 'Redaction 10', Georgia, serif;">#1</span>
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <span>مصطلح رئيسي 3</span>
-                  <div style="position: relative; height: 12px; display: flex; align-items: center;">
-                    <span style="position: absolute; right: 0; left: 0; height: 1px; background: rgba(5,59,45,0.2);"></span>
-                    <span style="position: absolute; right: 0; width: 41.1%;" data-term-bar="41.1 height: 2px; background: #053B2D;"></span>
-                    <span class="fa-gem" style="position: absolute; right: calc(41.1% - 6px);" data-term-gem="41.1 width: 12px; height: 12px; background: #053B2D;"></span>
-                  </div>
-                </div>
-                <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: left;"><span data-term-v="294400">294,400</span></span>
-              </div>
-            
-              <div style="display: grid; grid-template-columns: 34px 1fr 88px; align-items: center; gap: 12px; font-size: 13px;">
-                <span style="border: 1px solid #053B2D; text-align: center; padding: 2px 0; font-family: 'Redaction 10', Georgia, serif;">#1</span>
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <span>مصطلح رئيسي 4</span>
-                  <div style="position: relative; height: 12px; display: flex; align-items: center;">
-                    <span style="position: absolute; right: 0; left: 0; height: 1px; background: rgba(5,59,45,0.2);"></span>
-                    <span style="position: absolute; right: 0; width: 18.4%;" data-term-bar="18.4 height: 2px; background: #053B2D;"></span>
-                    <span class="fa-gem" style="position: absolute; right: calc(18.4% - 6px);" data-term-gem="18.4 width: 12px; height: 12px; background: #053B2D;"></span>
-                  </div>
-                </div>
-                <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: left;"><span data-term-v="132000">132,000</span></span>
-              </div>
-            
-              <div style="display: grid; grid-template-columns: 34px 1fr 88px; align-items: center; gap: 12px; font-size: 13px;">
-                <span style="border: 1px solid #053B2D; text-align: center; padding: 2px 0; font-family: 'Redaction 10', Georgia, serif;">#1</span>
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <span>مصطلح رئيسي 5</span>
-                  <div style="position: relative; height: 12px; display: flex; align-items: center;">
-                    <span style="position: absolute; right: 0; left: 0; height: 1px; background: rgba(5,59,45,0.2);"></span>
-                    <span style="position: absolute; right: 0; width: 16.2%;" data-term-bar="16.2 height: 2px; background: #053B2D;"></span>
-                    <span class="fa-gem" style="position: absolute; right: calc(16.2% - 6px);" data-term-gem="16.2 width: 12px; height: 12px; background: #053B2D;"></span>
-                  </div>
-                </div>
-                <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr; text-align: left;"><span data-term-v="115620">115,620</span></span>
-              </div>
-            
-          </div>
-        </article>
+      <article class="card span-4 rv"><span class="k"><i class="gem"></i>تجربة الزائر</span><h3 style="margin:0;font-size:22px;font-weight:500">خفض معدل الارتداد</h3><p class="d">زائر يتفاعل بدل ما يغادر.</p></article>
+      <article class="card span-4 rv"><span class="k"><i class="gem"></i>الثقة</span><h3 style="margin:0;font-size:22px;font-weight:500">رفع سلطة الموقع</h3><p class="d">موثوقية أعلى أمام محركات البحث.</p></article>
+      <article class="card span-4 rv"><span class="k"><i class="gem"></i>الأداء</span><h3 style="margin:0;font-size:22px;font-weight:500">تحسين سرعة الموقع</h3><p class="d">على المكتب والجوال.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- services accordion -->
+<section class="sec" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span class="eyebrow"><span class="gem"></span>الخدمات</span>
+        <h2 class="display h2">زاويتان،<br><b>نتقنهما.</b></h2>
       </div>
-
-      <!-- نقاط نعمل عليها -->
-      <div style="border: 1px solid #E2D6C6; display: flex; flex-wrap: wrap;">
-        <div style="flex: 1 1 220px; padding: 24px; border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
-          <span style="font-size: 13px; color: #44544F;">ونعمل باستمرار على</span>
-          <span style="font-size: 22px; font-weight: 700; color: #053B2D;">تجربة الزائر</span>
+      <p class="lead">ما نسوي كل شي. نسوي شيئين ونعطيهم كل وقتنا.</p>
+    </div>
+    <div class="acc rv" id="acc">
+      <div class="acc-item on" tabindex="0" role="button" aria-expanded="true">
+        <span class="vt">إدارة الحملات الإعلانية</span>
+        <div class="body">
+          <span class="n">01</span>
+          <h3>إدارة الحملات الإعلانية</h3>
+          <p>نكتب الرسائل، نختبر الزوايا والجماهير، ونخفض تكلفة التحويل حملة بعد حملة.</p>
+          <div class="tags"><span>Google</span><span>Meta</span><span>TikTok</span><span>Snapchat</span><span>كتابة إعلانية</span><span>اختبار الزوايا</span></div>
+          <svg class="mk" width="44" height="52" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
         </div>
-        <div class="fa-cell" style="flex: 1 1 220px; padding: 24px; border-left: 1px solid #E2D6C6; display: flex; gap: 12px; align-items: flex-start;">
-          <span class="fa-gem" style="width: 12px; height: 15px; background: #941704; margin-top: 6px;"></span>
-          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 17px; font-weight: 600;">خفض معدل الارتداد</span><span style="font-size: 14px; color: #44544F; line-height: 1.7;">زائر يتفاعل بدل ما يغادر.</span></div>
+      </div>
+      <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
+        <span class="vt">تحسين محركات البحث</span>
+        <div class="body">
+          <span class="n">02</span>
+          <h3>تحسين محركات البحث</h3>
+          <p>بحث الكلمات المفتاحية، تحسين المحتوى والبنية، ورفع سلطة الموقع حتى يوصلك العميل بدون إعلان.</p>
+          <div class="tags"><span>الكلمات المفتاحية</span><span>المحتوى</span><span>سلطة الموقع</span><span>تقارير دورية</span></div>
+          <svg class="mk" width="44" height="52" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
         </div>
-        <div class="fa-cell" style="flex: 1 1 220px; padding: 24px; border-left: 1px solid #E2D6C6; display: flex; gap: 12px; align-items: flex-start;">
-          <span class="fa-gem" style="width: 12px; height: 15px; background: #053B2D; margin-top: 6px;"></span>
-          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 17px; font-weight: 600;">رفع سلطة الموقع</span><span style="font-size: 14px; color: #44544F; line-height: 1.7;">موثوقية أعلى أمام محركات البحث.</span></div>
+      </div>
+      <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
+        <span class="vt">تجربة الزائر</span>
+        <div class="body">
+          <span class="n">03</span>
+          <h3>تجربة الزائر</h3>
+          <p>نخفض معدل الارتداد ونخلي الزائر يكمل رحلته إلى التواصل أو الشراء.</p>
+          <div class="tags"><span>معدل الارتداد</span><span>رحلة العميل</span><span>صفحات الهبوط</span></div>
         </div>
-        <div class="fa-cell" style="flex: 1 1 220px; padding: 24px; display: flex; gap: 12px; align-items: flex-start;">
-          <span class="fa-gem" style="width: 12px; height: 15px; background: #ADC6E4; margin-top: 6px;"></span>
-          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 17px; font-weight: 600;">تحسين سرعة الموقع</span><span style="font-size: 14px; color: #44544F; line-height: 1.7;">على المكتب والجوال.</span></div>
+      </div>
+      <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
+        <span class="vt">سرعة الموقع</span>
+        <div class="body">
+          <span class="n">04</span>
+          <h3>سرعة الموقع</h3>
+          <p>صفحات أسرع على المكتب والجوال، لأن كل ثانية تأخير تكلفك عملاء.</p>
+          <div class="tags"><span>PageSpeed</span><span>الجوال</span><span>Core Web Vitals</span></div>
+        </div>
+      </div>
+      <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
+        <span class="vt">تقارير واضحة</span>
+        <div class="body">
+          <span class="n">05</span>
+          <h3>تقارير واضحة</h3>
+          <p>أرقام مفهومة، وقرار واضح بعد كل تقرير. بدون مصطلحات تضيّعك.</p>
+          <div class="tags"><span>Google Analytics</span><span>Search Console</span><span>لوحات أداء</span></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ الخدمات ═══ -->
-  <section id="services" data-ref="svc" style="border-bottom: 1px solid #E2D6C6;">
-    <div style="max-width: 1280px; margin: 0 auto; border-inline: 1px solid #E2D6C6; box-sizing: border-box;">
-      <div data-rv="svc" class="rv" style="padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 48px) 40px; display: flex; flex-direction: column; gap: 14px; transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);">
-        <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #44544F;">
-          <span class="fa-gem" style="width: 9px; height: 11px; background: #941704;"></span>
-          <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr;">[ 02 ]</span>
-          <span>الخدمات</span>
-        </div>
-        <h2 style="margin: 0; font-size: clamp(36px, 4.8vw, 64px); line-height: 1.2; font-weight: 700; color: #053B2D;">زاويتان… <span style="color: #941704;">نتقنهما.</span></h2>
-      </div>
-      <a class="fa-row" href="#contact" style="display: grid; grid-template-columns: minmax(70px, 120px) minmax(0, 1.2fr) minmax(0, 1.6fr) 48px; gap: 24px; align-items: center; padding: 36px clamp(16px, 4vw, 48px); border-top: 1px solid #E2D6C6; text-decoration: none; color: #053B2D;">
-        <span class="fa-row-num" style="font-size: 44px; font-weight: 700; color: #053B2D; font-family: 'Redaction 10', Georgia, serif;">01</span>
-        <span style="font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; line-height: 1.35;">إدارة الحملات الإعلانية</span>
-        <span class="fa-row-muted" style="font-size: 15px; line-height: 1.8; font-weight: 300; color: #44544F;">Google وMeta وTikTok وSnapchat · كتابة الرسائل الإعلانية · اختبار الزوايا والجماهير · خفض تكلفة التحويل</span>
-        <span class="fa-arrow" aria-hidden="true" style="font-size: 28px; justify-self: end;">←</span>
-      </a>
-      <a class="fa-row" href="#contact" style="display: grid; grid-template-columns: minmax(70px, 120px) minmax(0, 1.2fr) minmax(0, 1.6fr) 48px; gap: 24px; align-items: center; padding: 36px clamp(16px, 4vw, 48px); border-top: 1px solid #E2D6C6; text-decoration: none; color: #053B2D;">
-        <span class="fa-row-num" style="font-size: 44px; font-weight: 700; color: #053B2D; font-family: 'Redaction 10', Georgia, serif;">02</span>
-        <span style="font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; line-height: 1.35;">تحسين محركات البحث</span>
-        <span class="fa-row-muted" style="font-size: 15px; line-height: 1.8; font-weight: 300; color: #44544F;">بحث الكلمات المفتاحية · خفض معدل الارتداد · رفع سلطة الموقع · تحسين السرعة · تقارير دورية</span>
-        <span class="fa-arrow" aria-hidden="true" style="font-size: 28px; justify-self: end;">←</span>
-      </a>
+<!-- about / triangle -->
+<section class="sec" style="background:#E9F2F3;border-block:1px solid var(--line)">
+  <div class="wrap about">
+    <div class="rv" style="display:flex;flex-direction:column;gap:18px">
+      <span class="eyebrow"><span class="gem"></span>من نحن</span>
+      <h2 class="display">لكل مثلث <b>زاوية رابعة…</b><br>نكتشفها لك!</h2>
+      <p class="lead" style="margin:0;font-size:17px;line-height:1.9;font-weight:300;color:var(--muted);max-width:460px">كل مثلث له ثلاث زوايا: المنتج والعميل والمنافس. نحن الزاوية الرابعة، الرؤية اللي تربطها ببعض وتحوّلها إلى ظهور ومبيعات.</p>
     </div>
-  </section>
-
-  <!-- ═══ طريقتنا ═══ -->
-  <section id="method" data-ref="method" style="border-bottom: 1px solid #E2D6C6;">
-    <div style="max-width: 1280px; margin: 0 auto; border-inline: 1px solid #E2D6C6; box-sizing: border-box;">
-      <div style="padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 48px) 40px; display: flex; flex-direction: column; gap: 14px;">
-        <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #44544F;">
-          <span class="fa-gem" style="width: 9px; height: 11px; background: #941704;"></span>
-          <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr;">[ 03 ]</span>
-          <span>كيف نعمل؟</span>
-        </div>
-        <h2 style="margin: 0; font-size: clamp(36px, 4.8vw, 64px); line-height: 1.2; font-weight: 700; color: #053B2D;">بأربع خطوات <span style="color: #941704;">نكتشف زاويتك الرابعة.</span></h2>
-      </div>
-      <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid #E2D6C6;">
-        <li data-rv="m1" class="rv fa-cell" style="padding: 32px clamp(16px, 3vw, 32px) 40px; border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; gap: 14px; transition: opacity .9s cubic-bezier(.2,.7,.2,1) 0s, transform .9s cubic-bezier(.2,.7,.2,1) 0s, background-color .5s;">
-          <span style="font-size: 64px; font-weight: 700; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px #053B2D; font-family: 'Redaction 10', Georgia, serif;">01</span>
-          <h3 style="margin: 0; font-size: 24px; font-weight: 700;">نفهم</h3>
-          <p style="margin: 0; font-size: 15px; line-height: 1.8; font-weight: 300; color: #44544F;">العلامة والجمهور والمنافسين.</p>
-        </li>
-        <li data-rv="m2" class="rv fa-cell" style="padding: 32px clamp(16px, 3vw, 32px) 40px; border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; gap: 14px; transition: opacity .9s cubic-bezier(.2,.7,.2,1) .12s, transform .9s cubic-bezier(.2,.7,.2,1) .12s, background-color .5s;">
-          <span style="font-size: 64px; font-weight: 700; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px #053B2D; font-family: 'Redaction 10', Georgia, serif;">02</span>
-          <h3 style="margin: 0; font-size: 24px; font-weight: 700;">نحدد الزاوية</h3>
-          <p style="margin: 0; font-size: 15px; line-height: 1.8; font-weight: 300; color: #44544F;">الرسائل والكلمات اللي تجيب العميل الصح.</p>
-        </li>
-        <li data-rv="m3" class="rv fa-cell" style="padding: 32px clamp(16px, 3vw, 32px) 40px; border-left: 1px solid #E2D6C6; display: flex; flex-direction: column; gap: 14px; transition: opacity .9s cubic-bezier(.2,.7,.2,1) .24s, transform .9s cubic-bezier(.2,.7,.2,1) .24s, background-color .5s;">
-          <span style="font-size: 64px; font-weight: 700; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px #053B2D; font-family: 'Redaction 10', Georgia, serif;">03</span>
-          <h3 style="margin: 0; font-size: 24px; font-weight: 700;">ننفّذ</h3>
-          <p style="margin: 0; font-size: 15px; line-height: 1.8; font-weight: 300; color: #44544F;">الحملات والتحسينات.</p>
-        </li>
-        <li data-rv="m4" class="rv fa-cell" style="padding: 32px clamp(16px, 3vw, 32px) 40px; display: flex; flex-direction: column; gap: 14px; transition: opacity .9s cubic-bezier(.2,.7,.2,1) .36s, transform .9s cubic-bezier(.2,.7,.2,1) .36s, background-color .5s;">
-          <span style="font-size: 64px; font-weight: 700; line-height: 1; color: #053B2D; font-family: 'Redaction 10', Georgia, serif;">04</span>
-          <h3 style="margin: 0; font-size: 24px; font-weight: 700;">نقيس ونحسّن</h3>
-          <p style="margin: 0; font-size: 15px; line-height: 1.8; font-weight: 300; color: #44544F;">تقارير واضحة وقرارات مبنية على الأرقام.</p>
-        </li>
-      </ol>
+    <div class="tri rv" id="tri" tabindex="0" role="img" aria-label="مثلث تظهر له زاوية رابعة عند المرور عليه">
+      <svg viewBox="0 0 400 400">
+        <polygon class="corner" points="360,316 200,372 40,316" fill="#5DF8D8" stroke="#093C5D" stroke-width="2" stroke-linejoin="round"/>
+        <polygon class="shape" points="200,40 360,316 40,316" fill="rgba(9,60,93,0.06)" stroke="#093C5D" stroke-width="2" stroke-linejoin="round"/>
+        <text class="four" x="200" y="290" text-anchor="middle" fill="#5DF8D8" font-family="Redaction 10, Georgia, serif" font-size="64" font-weight="700">4°</text>
+      </svg>
+      <span class="gem sp s1" style="width:16px;height:20px;background:#3B7597"></span>
+      <span class="gem sp s2" style="width:12px;height:15px;background:#093C5D"></span>
+      <span class="gem sp s3" style="width:10px;height:12px;background:#6FD1D7"></span>
+      <span class="gem sp s4" style="width:14px;height:17px;background:#5DF8D8"></span>
+      <span class="gem sp s5" style="width:9px;height:11px;background:#093C5D"></span>
+      <span class="gem sp s6" style="width:13px;height:16px;background:#6FD1D7"></span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ الحجز ═══ -->
-  <section id="contact" data-ref="cta" style="position: relative; background: #053B2D; color: #F8F3EC; overflow: hidden;">
-    <svg class="fa-hero-art" viewBox="0 0 400 440" aria-hidden="true" style="position: absolute; left: clamp(16px, 5vw, 80px); top: 50%; transform: translateY(-50%); width: min(28%, 320px); height: auto;">
-      <polyline pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" data-a-stroke-dashoffset="cta.d1" points="200,20 380,330 200,420 20,330 200,20" fill="none" stroke="#F8F3EC" stroke-opacity="0.55" stroke-width="1.4"></polyline>
-      <polygon points="200,250 236,312 200,330 164,312" fill="#ADC6E4" opacity="1" data-a-opacity="cta.fill"></polygon>
-    </svg>
-    <div data-rv="cta" class="rv" style="position: relative; max-width: 1280px; margin: 0 auto; border-inline: 1px solid rgba(248,243,236,0.2); box-sizing: border-box; padding: clamp(80px, 10vw, 144px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: 26px; transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);">
-      <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
-        <span class="fa-gem" style="width: 9px; height: 11px; background: #ADC6E4;"></span>
-        <span style="font-family: 'Redaction 10', Georgia, serif; direction: ltr;">[ 04 ]</span>
-        <span>تواصل</span>
-      </div>
-      <h2 style="margin: 0; font-size: clamp(40px, 6.4vw, 92px); line-height: 1.15; font-weight: 700; max-width: 820px;">لنكتشف زاويتك<br>الجديدة؟</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;">
-        <a class="fa-btn fa-btn-cream" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener" style="text-decoration: none; background: #F8F3EC; color: #053B2D; border: 1px solid #F8F3EC; padding: 15px 30px; border-radius: 4px; font-weight: 600; font-size: 16px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px;"><span class="fa-roll"><span>احجز موعدك</span><span>احجز موعدك</span></span><span aria-hidden="true">←</span></a>
-        <a class="fa-btn fa-btn-ghost" href="https://wa.me/966592018558" target="_blank" rel="noopener" style="text-decoration: none; background: transparent; border: 1px solid rgba(248,243,236,0.7); color: #F8F3EC; padding: 15px 30px; border-radius: 4px; font-weight: 600; font-size: 16px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center;"><span class="fa-roll"><span>واتساب</span><span>واتساب</span></span></a>
-        <a class="fa-btn fa-btn-ghost" href="https://www.linkedin.com/company/الزاوية-الرابعة" style="text-decoration: none; background: transparent; border: 1px solid rgba(248,243,236,0.7); color: #F8F3EC; padding: 15px 30px; border-radius: 4px; font-weight: 600; font-size: 16px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center; font-family: 'Redaction 10', Georgia, serif;"><span class="fa-roll"><span>LinkedIn</span><span>LinkedIn</span></span></a>
-      </div>
+<!-- CTA -->
+<section class="cta on-dark" id="contact">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
+  <div class="cta-in">
+    <span class="eyebrow"><span class="gem"></span>تواصل</span>
+    <h2 class="display">لنكتشف<br><b>زاويتك الجديدة؟</b></h2>
+    <div class="row">
+      <a class="btn btn-light" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener">احجز موعدك <span class="arr" aria-hidden="true">←</span></a>
+      <a class="btn btn-ghost" href="https://wa.me/966592018558" target="_blank" rel="noopener">واتساب</a>
+      <a class="btn btn-ghost lat" href="https://www.linkedin.com/company/الزاوية-الرابعة" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ التذييل ═══ -->
-  <footer style="background: #053B2D; color: #F8F3EC; border-top: 1px solid rgba(248,243,236,0.16);">
-    <div style="max-width: 1280px; margin: 0 auto; border-inline: 1px solid rgba(248,243,236,0.14); box-sizing: border-box; padding: 36px clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        <span class="fa-logo-cream" role="img" aria-label="الزاوية الرابعة" style="display: block; width: 147px; height: 34px;"></span>
-        <span style="font-size: 13px; color: #ADC6E4;">الرياض · <span style="font-family: 'Redaction 10', Georgia, serif; font-style: italic;">The Fourth Corner</span></span>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px;">
-        <a href="#results" style="color: #F8F3EC; text-decoration: none;">النتائج</a>
-        <a href="#services" style="color: #F8F3EC; text-decoration: none;">الخدمات</a>
-        <a href="#method" style="color: #F8F3EC; text-decoration: none;">كيف نعمل</a>
-        <a href="#contact" style="color: #F8F3EC; text-decoration: none;">تواصل</a>
-      </div>
-      <span style="font-size: 13px; color: #ADC6E4;">© 2026 الزاوية الرابعة</span>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span class="logo" role="img" aria-label="الزاوية الرابعة" style="width:150px;height:35px;color:#fff"></span>
+      <span style="font-size:13px;color:#8FC3CC">الرياض · <span class="lat" style="font-style:italic">The Fourth Corner</span></span>
     </div>
-  </footer>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <a href="#how">كيف نعمل</a><a href="#results">النتائج</a><a href="#services">الخدمات</a><a href="#contact">تواصل</a>
+    </div>
+    <span style="font-size:13px;color:#8FC3CC">© 2026 الزاوية الرابعة</span>
+  </div>
+</footer>
 
-</div>
 <script>
-(function () {
-  var canAnimate = 'IntersectionObserver' in window &&
-    !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  function $(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+  function ease(t){return 1-Math.pow(1-t,3)}
+  function seen(el,fn,th){ if(!hasIO||reduce){fn();return} var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){io.disconnect();fn()} },{threshold:th||.25}); io.observe(el) }
 
-  function $(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
-  function ease(t) { return 1 - Math.pow(1 - t, 3); }
-  function seg(e, a, b) { return Math.max(0, Math.min(1, (e - a) / (b - a))); }
+  /* reveals */
+  $('.rv').forEach(function(el){ seen(el,function(){el.classList.add('in')},.12) });
 
-  // ---- values per group, same math as the design ----
-  var compute = {
-    hero: function (e) {
-      return { d1: (1 - seg(e, 0, 0.7)).toFixed(3), d2: (1 - seg(e, 0.2, 0.9)).toFixed(3), fill: seg(e, 0.65, 1).toFixed(3),
-        cpa: Math.max(4, Math.round(24 - 20 * e)), roas: Math.round(40 * e), sales: Math.round(40 * e), kw: Math.round(99 * e) + 'K' };
-    },
-    ads: function (e) {
-      return { cpa: Math.max(4, Math.round(24 - 20 * e)), roas: Math.round(40 * e), sales: Math.round(40 * e) };
-    },
-    res: function (e) {
-      return { kw: Math.round(99 * e) + 'K', line: (1 - e).toFixed(3), dots: seg(e, 0.7, 1).toFixed(3), visits: (1.56 * e).toFixed(2) + 'M' };
-    },
-    cta: function (e) {
-      return { d1: (1 - seg(e, 0, 0.8)).toFixed(3), fill: seg(e, 0.7, 1).toFixed(3) };
+  /* ── hero: diamond dither field ── */
+  var cv=document.getElementById('field'), ctx=cv.getContext('2d');
+  var W,H,dpr,cols,rows,S=18, mx=-9999,my=-9999, t0=performance.now(), running=true;
+  function size(){ dpr=Math.min(2,window.devicePixelRatio||1); W=cv.clientWidth; H=cv.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); cols=Math.ceil(W/S)+1; rows=Math.ceil(H/S)+1 }
+  var pal=['#0d4a70','#3B7597','#6FD1D7','#5DF8D8'];
+  function draw(now){
+    var t=(now-t0)/1000; ctx.clearRect(0,0,W,H);
+    for(var j=0;j<rows;j++){ for(var i=0;i<cols;i++){
+      var x=i*S+(j%2?S/2:0), y=j*S;
+      var nx=x/W, ny=y/H;
+      var v=Math.sin(nx*6+t*.6)*Math.cos(ny*5-t*.45)+Math.sin((nx+ny)*7-t*.8)*.6;
+      var dx=x-mx, dy=y-my, d=Math.sqrt(dx*dx+dy*dy); v+=Math.max(0,1-d/220)*1.8;
+      v=(v+1.6)/3.4; if(v<.18) continue;
+      var r=Math.min(1,v)*S*.42, c=pal[Math.min(3,Math.floor(v*4))];
+      ctx.globalAlpha=Math.min(.75,v*.6); ctx.fillStyle=c;
+      ctx.beginPath(); ctx.moveTo(x,y-r); ctx.lineTo(x+r*.8,y+r*.48); ctx.lineTo(x,y+r*.75); ctx.lineTo(x-r*.8,y+r*.48); ctx.closePath(); ctx.fill();
+    }}
+    ctx.globalAlpha=1;
+    if(running && !reduce) requestAnimationFrame(draw);
+  }
+  size(); addEventListener('resize',size);
+  cv.parentNode.addEventListener('mousemove',function(e){var b=cv.getBoundingClientRect();mx=e.clientX-b.left;my=e.clientY-b.top});
+  cv.parentNode.addEventListener('mouseleave',function(){mx=my=-9999});
+  if(hasIO){ new IntersectionObserver(function(e){ var vis=e[0].isIntersecting; if(vis&&!running){running=true;requestAnimationFrame(draw)} running=vis },{threshold:0}).observe(cv) }
+  requestAnimationFrame(draw);
+
+  /* ── diagram wires with travelling dots ── */
+  var dg=document.getElementById('dg'), svg=document.getElementById('wires'), hub=document.getElementById('hub');
+  var NS='http://www.w3.org/2000/svg';
+  function cols_(side){return $('[data-side="'+side+'"] .chip',dg)}
+  function build(){
+    if(!dg.offsetWidth) return;
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var B=dg.getBoundingClientRect(), hb=hub.getBoundingClientRect();
+    var hx=hb.left-B.left+hb.width/2, hy=hb.top-B.top+hb.height/2, hr=hb.width/2;
+    function pt(el,edge){var r=el.getBoundingClientRect(); return {x:(edge==='l'?r.left:r.right)-B.left, y:r.top-B.top+r.height/2}}
+    function wire(a,b,cls,dur,delay){
+      var p=document.createElementNS(NS,'path'), mxp=(a.x+b.x)/2;
+      var d='M'+a.x+','+a.y+' C'+mxp+','+a.y+' '+mxp+','+b.y+' '+b.x+','+b.y;
+      p.setAttribute('d',d); svg.appendChild(p);
+      if(reduce) return;
+      var c=document.createElementNS(NS,'circle'); c.setAttribute('r','3'); if(cls) c.setAttribute('class',cls);
+      var am=document.createElementNS(NS,'animateMotion'); am.setAttribute('dur',dur+'s'); am.setAttribute('repeatCount','indefinite'); am.setAttribute('begin',delay+'s'); am.setAttribute('path',d);
+      c.appendChild(am); svg.appendChild(c);
     }
-  };
-
-  function apply(group, p) {
-    var e = ease(p), v = compute[group](e);
-    $('[data-k^="' + group + '."]').forEach(function (el) { el.textContent = v[el.getAttribute('data-k').split('.')[1]]; });
-    ['stroke-dashoffset', 'opacity'].forEach(function (a) {
-      $('[data-a-' + a + '^="' + group + '."]').forEach(function (el) {
-        el.setAttribute(a, v[el.getAttribute('data-a-' + a).split('.')[1]]);
-      });
-    });
-    if (group === 'ads') {
-      $('[data-gem]').forEach(function (el) {
-        var i = +el.getAttribute('data-i'), n = el.getAttribute('data-gem') === 'mkt' ? 10 : 14;
-        el.style.opacity = i < Math.round(n * e) ? 1 : 0.08;
-      });
-    }
-    if (group === 'res') {
-      $('[data-term-v]').forEach(function (el) { el.textContent = Math.round(+el.getAttribute('data-term-v') * e).toLocaleString('en-US'); });
-      $('[data-term-bar]').forEach(function (el) { el.style.width = (+el.getAttribute('data-term-bar') * e).toFixed(1) + '%'; });
-      $('[data-term-gem]').forEach(function (el) { el.style.right = 'calc(' + (+el.getAttribute('data-term-gem') * e).toFixed(1) + '% - 6px)'; });
-    }
+    var src=cols_('src'), t1=cols_('tag1'), t2=cols_('tag2'), out=cols_('out');
+    // RTL: src column is on the right. flow right -> left
+    src.forEach(function(el,i){ wire(pt(el,'l'),pt(t1[i],'r'),'',2.4,i*.35) });
+    t1.forEach(function(el,i){ var a=pt(el,'l'); wire(a,{x:hx+hr*.92,y:hy+(a.y-hy)*.25},'',2.2,i*.35+.6) });
+    t2.forEach(function(el,i){ var b=pt(el,'r'); wire({x:hx-hr*.92,y:hy+(b.y-hy)*.25},b,'m',2.2,i*.35+1.2) });
+    t2.forEach(function(el,i){ wire(pt(el,'l'),pt(out[i],'r'),'m',2.4,i*.35+1.8) });
   }
+  addEventListener('load',build); addEventListener('resize',function(){clearTimeout(build._t);build._t=setTimeout(build,150)});
+  if(document.fonts) document.fonts.ready.then(build);
+  // pulse chips in sequence
+  if(!reduce){ var all=[].concat(cols_('src'),cols_('tag1'),cols_('tag2'),cols_('out')), k=0;
+    setInterval(function(){ var row=k%5; [cols_('src'),cols_('tag1'),cols_('tag2'),cols_('out')].forEach(function(c,ci){ setTimeout(function(){c[row].classList.add('pulse'); setTimeout(function(){c[row].classList.remove('pulse')},700)},ci*380) }); k++ },1900) }
 
-  function run(group) {
-    var start = null;
-    function step(t) {
-      if (start === null) start = t;
-      var k = Math.min(1, (t - start) / 2000);
-      apply(group, k);
-      if (k < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
+  /* ── orbit steps ── */
+  var steps=$('#steps .step'), nodes=$('#orbit .node'), arc=document.getElementById('arc'), cur=-1, timer=null;
+  function go(i){ cur=i; steps.forEach(function(s,j){s.classList.toggle('on',j===i)}); nodes.forEach(function(n,j){n.classList.toggle('on',j<=i)}); arc.setAttribute('stroke-dashoffset', String(100-(i+1)*25)); }
+  function auto(){ clearInterval(timer); timer=setInterval(function(){ go((cur+1)%4) },4000) }
+  steps.forEach(function(s,i){ s.addEventListener('click',function(){go(i);auto()}); s.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(i);auto()}}) });
+  seen(document.getElementById('orbit'),function(){ go(0); if(!reduce) auto() });
 
-  function onSeen(el, fn) {
-    if (!el) return;
-    var io = new IntersectionObserver(function (entries) {
-      if (entries[0] && entries[0].isIntersecting) { io.disconnect(); fn(); }
-    }, { threshold: 0.2 });
-    io.observe(el);
-  }
+  /* ── counters ── */
+  $('[data-count]').forEach(function(card){
+    var nums=$('[data-from]',card);
+    if(!reduce) nums.forEach(function(n){ n.textContent=Number(n.dataset.from).toFixed(+(n.dataset.dec||0)) });
+    var gem=card.querySelector('[data-gems]'); var gs=[];
+    if(gem){ for(var g=0;g<+gem.dataset.gems;g++){ var s=document.createElement('span'); if(g>=+gem.dataset.base) s.className='x'; gem.appendChild(s); gs.push(s) } if(reduce) gs.forEach(function(s){s.classList.add('lit')}) }
+    seen(card,function(){
+      if(reduce) return;
+      var st=null; function step(ts){ if(st===null) st=ts; var k=Math.min(1,(ts-st)/1800), e=ease(k);
+        nums.forEach(function(n){ var f=+n.dataset.from, to=+n.dataset.to, d=+(n.dataset.dec||0); n.textContent=(f+(to-f)*e).toFixed(d) });
+        gs.forEach(function(s,i){ s.classList.toggle('lit', i < Math.round(gs.length*e)) });
+        if(k<1) requestAnimationFrame(step) }
+      requestAnimationFrame(step);
+      var ln=card.querySelector('#kwline'); if(ln){ ln.style.transition='none'; ln.setAttribute('stroke-dashoffset','1'); ln.getBoundingClientRect(); ln.style.transition='stroke-dashoffset 2s cubic-bezier(.2,.7,.2,1)'; ln.setAttribute('stroke-dashoffset','0') }
+    },.35);
+  });
+  var terms=[658400,360000,294400,132000,115620], tw=document.getElementById('terms');
+  terms.forEach(function(n,i){ var r=document.createElement('div'); r.className='term'; r.innerHTML='<span class="p">#1</span><span class="t"><i data-w="'+(n/658400*100).toFixed(1)+'"></i></span><span class="v">'+n.toLocaleString('en-US')+'</span>'; tw.appendChild(r) });
+  seen(tw,function(){ $('i[data-w]',tw).forEach(function(b,i){ setTimeout(function(){ b.style.width=b.dataset.w+'%' }, reduce?0:i*120) }) },.3);
 
-  var ref = function (n) { return document.querySelector('[data-ref="' + n + '"]'); };
-  var tri = ref('aboutTri');
+  /* ── accordion ── */
+  var items=$('#acc .acc-item');
+  function open(i){ items.forEach(function(it,j){ it.classList.toggle('on',j===i); it.setAttribute('aria-expanded', j===i?'true':'false') }) }
+  items.forEach(function(it,i){ it.addEventListener('click',function(){open(i)}); it.addEventListener('mouseenter',function(){ if(matchMedia('(hover:hover)').matches) open(i) }); it.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i)} }) });
 
-  if (!canAnimate) {
-    $('.rv').forEach(function (el) { el.classList.add('in'); });
-    return;
-  }
+  /* ── triangle auto-play once ── */
+  var tri=document.getElementById('tri');
+  seen(tri,function(){ if(reduce) return; setTimeout(function(){tri.classList.add('on')},500); setTimeout(function(){tri.classList.remove('on')},3300) },.6);
 
-  // reveals
-  function reveal(keys) { keys.forEach(function (k) { $('[data-rv="' + k + '"]').forEach(function (el) { el.classList.add('in'); }); }); }
-
-  // counters start from zero
-  ['hero', 'ads', 'res', 'cta'].forEach(function (g) { apply(g, 0); });
-
-  onSeen(ref('hero'), function () { reveal(['hero']); run('hero'); });
-  onSeen(ref('res'), function () { reveal(['res']); run('res'); });
-  onSeen(ref('ads'), function () { run('ads'); });
-  onSeen(ref('svc'), function () { reveal(['svc']); });
-  onSeen(ref('method'), function () { reveal(['m1', 'm2', 'm3', 'm4']); });
-  onSeen(ref('cta'), function () { reveal(['cta']); run('cta'); });
-
-  // about: the headline settles from inside the triangle as you scroll
-  var about = ref('about'), text = ref('aboutText');
-  if (about && text && tri) {
-    var ty0 = 0, sc0 = 0.35, triDone = false, ticking = false;
-    text.style.willChange = 'transform';
-    var measure = function () {
-      var prev = text.style.transform; text.style.transform = 'none';
-      var textCenter = text.offsetTop + text.offsetHeight / 2;
-      var triCenter = tri.offsetTop + tri.offsetHeight * 0.56;
-      ty0 = triCenter - textCenter;
-      sc0 = Math.max(0.2, Math.min(0.5, (tri.offsetWidth * 0.5) / (text.offsetWidth || 1)));
-      text.style.transform = prev;
-    };
-    var update = function () {
-      ticking = false;
-      measure();
-      var r = about.getBoundingClientRect(), vh = window.innerHeight || 800;
-      var p = Math.max(0, Math.min(1, (vh * 0.8 - r.top) / (vh * 0.55)));
-      var e = ease(p);
-      text.style.transform = 'translateY(' + (ty0 * (1 - e)).toFixed(1) + 'px) scale(' + (sc0 + (1 - sc0) * e).toFixed(3) + ')';
-      if (p >= 0.98 && !triDone) {
-        triDone = true;
-        setTimeout(function () { tri.classList.add('fa-on'); }, 300);
-        setTimeout(function () { tri.classList.remove('fa-on'); }, 3100);
-      }
-    };
-    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    update();
-  }
-
-  // diamond cursor (mouse only)
-  var cur = document.querySelector('#fa-root > .fa-gem[aria-hidden]');
-  var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-  var root = document.getElementById('fa-root');
-  if (cur && fine && root) {
-    var big = null;
-    root.addEventListener('mousemove', function (e) {
-      cur.style.opacity = '1';
-      cur.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0) translate(-50%,-50%)';
-      var b = !!(e.target.closest && e.target.closest('a,button,.fa-tri'));
-      if (b !== big) { big = b; cur.style.width = b ? '64px' : '18px'; cur.style.height = b ? '78px' : '22px'; }
-    });
-    root.addEventListener('mouseleave', function () { cur.style.opacity = '0'; });
-  }
+  /* ── diamond cursor ── */
+  var c=document.querySelector('.cur');
+  if(c && matchMedia('(pointer:fine)').matches && !reduce){ var big=null;
+    addEventListener('mousemove',function(e){ c.style.opacity='1'; c.style.transform='translate3d('+e.clientX+'px,'+e.clientY+'px,0) translate(-50%,-50%)';
+      var b=!!(e.target.closest&&e.target.closest('a,button,.tri,.acc-item,.step')); if(b!==big){big=b;c.style.width=b?'56px':'16px';c.style.height=b?'68px':'20px'} });
+    document.addEventListener('mouseleave',function(){c.style.opacity='0'}) }
 })();
-
 </script>
 </body>
 </html>
