@@ -592,6 +592,7 @@ footer a:hover{color:var(--mint)}
     requestAnimationFrame(function(){ fg.setAttribute('stroke-dashoffset',String(100-s)) });
     var t0=null; function tick(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/1100); sv.textContent=Math.round(s*p); if(p<1)requestAnimationFrame(tick) }
     reduce?(sv.textContent=s):requestAnimationFrame(tick);
+    setTimeout(function(){ sv.textContent=s },1300);
     document.getElementById('band').textContent = s>=75?'جاهزية جيدة':(s>=45?'جاهزية جزئية، فيه فجوات واضحة':'جاهزية ضعيفة');
     var ax=''; Object.keys(AXN).forEach(function(k){ if(d.axes[k]==null) return; ax+='<div class="axb"><span>'+AXN[k]+'</span><b>'+d.axes[k]+'%</b><i><em data-w="'+d.axes[k]+'"></em></i></div>' });
     document.getElementById('axbars').innerHTML=ax;
