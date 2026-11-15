@@ -163,6 +163,8 @@ section{position:relative}
 .axb b{font-family:var(--lat);font-weight:400;text-align:left;direction:ltr}
 .axb i{grid-column:1/-1;height:6px;border-radius:6px;background:rgba(111,209,215,.18);overflow:hidden}
 .axb i em{display:block;height:100%;width:0;background:var(--mint);border-radius:6px;transition:width 1.2s var(--ease)}
+.score .pages{margin:0;font-size:12.5px;color:#8FC3CC;line-height:1.7}
+.score .pages span{font-family:var(--lat);direction:ltr;unicode-bidi:isolate}
 .rcol{display:flex;flex-direction:column;gap:16px}
 .aicard{border-radius:20px;padding:clamp(20px,2.4vw,26px);background:var(--mint);color:var(--deep);display:flex;flex-direction:column;gap:8px}
 .aicard.no{background:#fff;border:1px solid var(--line);color:var(--navy)}
@@ -371,6 +373,7 @@ footer a:hover{color:var(--mint)}
         </div>
         <div class="band" id="band"></div>
         <div class="axbars" id="axbars"></div>
+        <p class="pages" id="rPages"></p>
       </aside>
       <div class="rcol">
         <div class="aicard" id="aicard" hidden>
@@ -596,6 +599,8 @@ footer a:hover{color:var(--mint)}
     document.getElementById('band').textContent = s>=75?'جاهزية جيدة':(s>=45?'جاهزية جزئية، فيه فجوات واضحة':'جاهزية ضعيفة');
     var ax=''; Object.keys(AXN).forEach(function(k){ if(d.axes[k]==null) return; ax+='<div class="axb"><span>'+AXN[k]+'</span><b>'+d.axes[k]+'%</b><i><em data-w="'+d.axes[k]+'"></em></i></div>' });
     document.getElementById('axbars').innerHTML=ax;
+    var pg=d.pages||['/'];
+    document.getElementById('rPages').innerHTML='فحصنا '+pg.length+(pg.length>2&&pg.length<11?' صفحات':' صفحة')+': '+pg.map(function(p){return '<span>'+esc(p)+'</span>'}).join('، ');
     setTimeout(function(){ $('.axb em').forEach(function(e){ e.style.width=e.getAttribute('data-w')+'%' }) },60);
 
     var fails=d.checks.filter(function(c){return !c.ok && c.weight>0}).sort(function(a,b){return b.weight-a.weight});
@@ -629,7 +634,9 @@ footer a:hover{color:var(--mint)}
     fetch(SCAN_API+'?url='+encodeURIComponent(host),ctl?{signal:ctl.signal}:{}).then(function(r){ return r.json().then(function(j){ if(!r.ok) throw new Error(j.error||'خطأ'); return j }) })
       .then(function(d){
         stopSteps();
-        if(!d.reachable){ err.textContent='ما قدرنا نوصل للموقع '+host+'. تأكد من الرابط، أو قد يكون الموقع يحجب الفحص الآلي.'; prog.hidden=true; return }
+        if(!d.reachable){ err.textContent = d.blocked
+            ? 'موقع '+host+' محمي بنظام يمنع الفحص الآلي، فما نقدر نعطي درجة دقيقة. تواصل معنا عبر واتساب ونفحصه لك يدوياً.'
+            : 'ما قدرنا نوصل للموقع '+host+'. تأكد من الرابط وجرّب مرة ثانية.'; prog.hidden=true; return }
         setTimeout(function(){ prog.hidden=true; show(d) },350);
       })
       .catch(function(x){ stopSteps(); prog.hidden=true; err.textContent=(x&&x.name==='AbortError')?'استغرق الفحص وقتاً أطول من المتوقع. جرّب مرة ثانية.':((x&&x.message&&x.message!=='Failed to fetch')?x.message:'تعذّر الفحص الآن. جرّب بعد قليل أو تواصل معنا عبر واتساب.') })
