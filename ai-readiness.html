@@ -6,11 +6,12 @@
 <title>فحص الظهور في الذكاء الاصطناعي · الزاوية الرابعة</title>
 <meta name="description" content="هل يذكر ChatGPT وClaude وPerplexity وGemini نشاطك؟ نفحص جاهزية موقعك لأدوات الذكاء الاصطناعي، ونقيس ظهورك في إجاباتها بمنهجية واضحة.">
 <meta property="og:title" content="فحص الظهور في الذكاء الاصطناعي · الزاوية الرابعة">
-<meta property="og:description" content="حين يجيب الذكاء الاصطناعي، هل يذكرك؟ قيّم جاهزية موقعك في دقيقتين.">
+<meta property="og:description" content="حين يجيب الذكاء الاصطناعي، هل يذكرك؟ افحص جاهزية موقعك فوراً ومجاناً.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#093C5D">
 <link rel="canonical" href="https://4thcornersa.github.io/ai-readiness.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://ai-scan.fourthcornersa.workers.dev">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap">
@@ -129,46 +130,64 @@ section{position:relative}
 .c-mint .k,.c-mint p{color:#0b4a5f}
 .c-mint .k .gem{background:var(--navy)}
 
-/* self check */
-.check{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:20px;align-items:start}
-@media (max-width:980px){.check{grid-template-columns:1fr}}
-.qs{border-radius:22px;background:#fff;border:1px solid var(--line);overflow:hidden}
-.qs-top{padding:22px clamp(18px,2.6vw,28px);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px;background:#F7F6F2}
-.qs-top label{font-size:13px;color:var(--muted)}
-.qs-top input{width:100%;height:48px;border-radius:12px;border:1px solid var(--line);padding:0 14px;font:400 16px var(--lat);direction:ltr;text-align:left;color:var(--navy);background:#fff}
-.qs-top input:focus{outline:2px solid var(--aqua);outline-offset:1px}
-.axis{padding:6px clamp(18px,2.6vw,28px) 10px;border-bottom:1px solid var(--line)}
-.axis:last-child{border-bottom:0}
-.axis h4{margin:16px 0 4px;font-size:12px;letter-spacing:.06em;color:var(--blue);font-weight:500;display:flex;align-items:center;gap:8px}
-.axis h4 .gem{width:8px;height:10px;background:var(--aqua)}
-.q{display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center;padding:14px 0;border-top:1px dashed var(--line)}
-.axis h4+.q{border-top:0}
-.q p{margin:0;font-size:15px;line-height:1.7}
-.q p small{display:block;color:var(--muted);font-size:12.5px;font-weight:300;margin-top:2px}
-.seg{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;background:#F7F6F2}
-.seg button{border:0;background:transparent;font:500 13px var(--ar);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;transition:background-color .3s,color .3s}
-.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
-.seg button[data-v="0"][aria-pressed="true"]{background:#C9DCE5;color:var(--navy)}
-.seg button[data-v="u"][aria-pressed="true"]{background:var(--paper-2);color:var(--navy)}
-@media (max-width:560px){.q{grid-template-columns:1fr}.seg{justify-self:start}}
-
-.score{position:sticky;top:90px;border-radius:22px;background:var(--navy);color:#fff;padding:clamp(22px,2.6vw,30px);display:flex;flex-direction:column;gap:18px}
-.score .k{font-size:13px;color:#B5DDE2;display:flex;align-items:center;gap:8px}
+/* instant scan */
+[hidden]{display:none !important}
+.scanbox{display:flex;gap:8px;padding:8px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 40px rgba(9,60,93,.08);max-width:760px}
+.scanbox input{flex:1;min-width:0;border:0;background:transparent;font:400 18px var(--lat);direction:ltr;text-align:left;color:var(--navy);padding:0 18px;height:52px}
+.scanbox input:focus{outline:none}
+.scanbox:focus-within{border-color:var(--aqua);box-shadow:0 0 0 3px rgba(111,209,215,.35)}
+.scanbox .btn{min-height:52px;padding:0 26px}
+.scanbox .btn[disabled]{opacity:.6;cursor:wait}
+@media (max-width:560px){.scanbox{flex-direction:column;border-radius:20px}.scanbox input{height:48px;text-align:center}.scanbox .btn{justify-content:center}}
+.scan-err{min-height:22px;margin:10px 4px 0;color:#B25A5A;font-size:14px}
+.progress{margin-top:22px;display:flex;flex-direction:column;gap:10px;max-width:760px}
+.pstep{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);opacity:.35;transition:opacity .4s}
+.pstep .gem{width:10px;height:12px;background:var(--line)}
+.pstep.on{opacity:1;color:var(--navy)}.pstep.on .gem{background:var(--aqua);animation:blink 1s ease-in-out infinite}
+.pstep.done{opacity:1}.pstep.done .gem{background:var(--navy);animation:none}
+.result{margin-top:28px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px;align-items:start}
+@media (max-width:980px){.result{grid-template-columns:1fr}}
+.score{border-radius:22px;background:var(--navy);color:#fff;padding:clamp(22px,2.6vw,30px);display:flex;flex-direction:column;gap:18px}
+.score .k{font-size:13px;color:#B5DDE2;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .score .k .gem{width:8px;height:10px;background:var(--mint)}
 .gauge{position:relative;width:200px;height:200px;align-self:center}
 .gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
 .gauge .bg{fill:none;stroke:rgba(111,209,215,.18);stroke-width:12}
-.gauge .fg{fill:none;stroke:var(--mint);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1s var(--ease),stroke .6s}
+.gauge .fg{fill:none;stroke:var(--mint);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.2s var(--ease),stroke .6s}
 .gauge .val{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
 .gauge .val b{font-family:var(--lat);font-weight:400;font-size:64px;line-height:1;display:block}
 .gauge .val small{font-size:13px;color:#B5DDE2}
-.band{text-align:center;font-size:18px;font-weight:500;min-height:27px}
-.prog{font-size:13px;color:#B5DDE2;text-align:center}
-.gaps{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
-.gaps li{font-size:14px;line-height:1.7;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(111,209,215,.18)}
-.gaps li b{display:block;font-weight:500;color:var(--mint);font-size:13px;margin-bottom:2px}
-.score .btn{justify-content:center}
-.score .note{font-size:12px;color:#8FC3CC;line-height:1.7;margin:0}
+.band{text-align:center;font-size:18px;font-weight:500}
+.axbars{display:flex;flex-direction:column;gap:12px;padding-top:6px;border-top:1px solid rgba(111,209,215,.2)}
+.axb{display:grid;grid-template-columns:1fr 44px;gap:4px 10px;font-size:14px;align-items:center}
+.axb b{font-family:var(--lat);font-weight:400;text-align:left;direction:ltr}
+.axb i{grid-column:1/-1;height:6px;border-radius:6px;background:rgba(111,209,215,.18);overflow:hidden}
+.axb i em{display:block;height:100%;width:0;background:var(--mint);border-radius:6px;transition:width 1.2s var(--ease)}
+.rcol{display:flex;flex-direction:column;gap:16px}
+.aicard{border-radius:20px;padding:clamp(20px,2.4vw,26px);background:var(--mint);color:var(--deep);display:flex;flex-direction:column;gap:8px}
+.aicard.no{background:#fff;border:1px solid var(--line);color:var(--navy)}
+.aicard .k{font-size:13px;display:flex;align-items:center;gap:8px;color:#0b4a5f}
+.aicard .k .gem{width:8px;height:10px;background:var(--navy)}
+.aicard h3{margin:0;font-size:22px;font-weight:500}
+.aiq{margin:0;font-size:13px;color:#0b4a5f}
+.aicard.no .aiq,.aicard.no .k{color:var(--muted)}
+.aicard blockquote{margin:4px 0 0;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.55);font-size:14px;line-height:1.8;font-weight:300}
+.aicard.no blockquote{background:#F7F6F2}
+.issues{border-radius:20px;background:#fff;border:1px solid var(--line);padding:clamp(20px,2.4vw,26px)}
+.issues h3{margin:0 0 6px;font-size:18px;font-weight:500}
+.issues ul{list-style:none;margin:0;padding:0}
+.issues li{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:14px 0;border-top:1px dashed var(--line);font-size:14.5px;line-height:1.75}
+.issues li:first-child{border-top:0}
+.issues li i{font-style:normal;font-weight:600;color:#B25A5A}
+.issues li.ok i{color:#1fa38f}
+.issues li b{display:block;font-weight:500}
+.issues li span{display:block;color:var(--muted);font-weight:300}
+.more{margin:8px 0 0;font-size:13px;color:var(--blue)}
+.unlock{border-radius:20px;background:var(--deep);color:#fff;padding:clamp(20px,2.4vw,26px);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.unlock div{display:flex;flex-direction:column;gap:4px;max-width:420px}
+.unlock b{font-size:18px;font-weight:500}
+.unlock span{font-size:14px;color:#A9D5DA;font-weight:300;line-height:1.8}
+.result .note{font-size:12.5px;color:var(--muted);line-height:1.7;margin:0}
 
 /* axes we check */
 .axes{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
@@ -258,7 +277,7 @@ footer a:hover{color:var(--mint)}
   <a href="./" class="mark" aria-label="الزاوية الرابعة: الرئيسية">
     <svg class="mark-svg" width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
   </a>
-  <a class="lnk" href="#check">قيّم موقعك</a>
+  <a class="lnk" href="#check">افحص موقعك</a>
   <a class="lnk" href="#scope">ما نفحصه</a>
   <a class="lnk" href="#offers">الخدمة</a>
   <a class="btn btn-light" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener">احجز استشارة <span class="arr" aria-hidden="true">←</span></a>
@@ -272,7 +291,7 @@ footer a:hover{color:var(--mint)}
       <h1 class="display">حين يجيب الذكاء الاصطناعي،<br><b>هل <span class="accent">يذكرك؟</span></b></h1>
       <p>عميلك يسأل ChatGPT وGemini وPerplexity قبل أن يبحث في قوقل. نفحص هل يستطيع الذكاء الاصطناعي قراءة موقعك وفهمه والاستشهاد به، ونقيس كم مرة يذكرك فعلاً.</p>
       <div class="ctas">
-        <a class="btn btn-light" href="#check">قيّم موقعك في دقيقتين <span class="arr" aria-hidden="true">←</span></a>
+        <a class="btn btn-light" href="#check">افحص موقعك الآن <span class="arr" aria-hidden="true">←</span></a>
         <a class="btn btn-ghost" href="#offers">تفاصيل الخدمة</a>
       </div>
     </div>
@@ -319,37 +338,61 @@ footer a:hover{color:var(--mint)}
   </div>
 </section>
 
-<!-- self check -->
+<!-- instant scan -->
 <section class="sec" id="check" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
       <div style="display:flex;flex-direction:column;gap:18px">
-        <span class="eyebrow"><span class="gem"></span>تقييم ذاتي مجاني</span>
-        <h2 class="display h2">قيّم جاهزية موقعك،<br><b>في دقيقتين.</b></h2>
+        <span class="eyebrow"><span class="gem"></span>فحص فوري مجاني</span>
+        <h2 class="display h2">اكتب رابط موقعك،<br><b>والنتيجة خلال ثوانٍ.</b></h2>
       </div>
-      <p class="lead">عشرة أسئلة تعطيك صورة أولية. إذا ما تعرف الإجابة اختر «ما أعرف»، ونتحقق منها نحن في الفحص الكامل.</p>
+      <p class="lead">نقرأ موقعك كما تقرؤه أدوات الذكاء الاصطناعي: هل يُسمح لها بالدخول، وهل تفهم من أنت، وهل تجد إجابات تستشهد بها. ونسأل Gemini عنك مباشرة.</p>
     </div>
 
-    <div class="check">
-      <div class="qs rv" id="qs">
-        <div class="qs-top">
-          <label for="site">رابط موقعك (اختياري، يرسل مع النتيجة)</label>
-          <input id="site" type="url" inputmode="url" placeholder="https://example.com" autocomplete="url">
-        </div>
-      </div>
+    <form class="scanbox rv" id="scanForm" novalidate>
+      <input id="site" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="example.com" aria-label="رابط موقعك" required>
+      <button class="btn btn-navy" id="scanBtn" type="submit">افحص الآن <span class="arr" aria-hidden="true">←</span></button>
+    </form>
+    <p class="scan-err" id="scanErr" role="alert"></p>
 
-      <aside class="score rv" aria-live="polite">
-        <span class="k"><span class="gem"></span>درجة الجاهزية التقديرية</span>
+    <div class="progress" id="progress" hidden>
+      <div class="pstep" data-i="0"><span class="gem"></span>نقرأ ملف robots.txt وصلاحيات زواحف الذكاء الاصطناعي</div>
+      <div class="pstep" data-i="1"><span class="gem"></span>نبحث عن خريطة الموقع</div>
+      <div class="pstep" data-i="2"><span class="gem"></span>نحلل الصفحة الرئيسية: العناوين والبيانات المنظمة والمحتوى</div>
+      <div class="pstep" data-i="3"><span class="gem"></span>نسأل Gemini عن نشاطك</div>
+    </div>
+
+    <div class="result" id="result" hidden aria-live="polite">
+      <aside class="score">
+        <span class="k"><span class="gem"></span>درجة الجاهزية · <span class="lat" id="rHost"></span></span>
         <div class="gauge">
           <svg viewBox="0 0 200 200"><circle class="bg" cx="100" cy="100" r="86"/><circle class="fg" id="fg" cx="100" cy="100" r="86" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/></svg>
           <div class="val"><div><b class="lat" id="sv">0</b><small>من 100</small></div></div>
         </div>
-        <div class="band" id="band">ابدأ بالإجابة</div>
-        <div class="prog" id="prog">0 من 10 أسئلة</div>
-        <ul class="gaps" id="gaps"></ul>
-        <a class="btn btn-light" id="send" href="https://wa.me/966592018558" target="_blank" rel="noopener">أرسل نتيجتي واطلب الفحص الكامل <span class="arr" aria-hidden="true">←</span></a>
-        <p class="note">تقييم ذاتي مبني على إجاباتك، وليس فحصاً تقنياً لموقعك. الفحص الكامل نتحقق فيه من كل بند بأنفسنا.</p>
+        <div class="band" id="band"></div>
+        <div class="axbars" id="axbars"></div>
       </aside>
+      <div class="rcol">
+        <div class="aicard" id="aicard" hidden>
+          <span class="k"><span class="gem"></span>اختبار حي · سألنا Gemini عنك</span>
+          <h3 id="aiTitle"></h3>
+          <p class="aiq" id="aiQ"></p>
+          <blockquote id="aiA"></blockquote>
+        </div>
+        <div class="issues">
+          <h3>أهم ما يحتاج إصلاح</h3>
+          <ul id="issues"></ul>
+          <p class="more" id="more"></p>
+        </div>
+        <div class="unlock">
+          <div>
+            <b>التقرير الكامل</b>
+            <span>كل البنود مع طريقة الإصلاح، وقياس ظهورك الفعلي في ChatGPT وGemini وPerplexity وClaude مقارنة بمنافسيك.</span>
+          </div>
+          <a class="btn btn-light" id="send" href="https://wa.me/966592018558" target="_blank" rel="noopener">اطلب التقرير عبر واتساب <span class="arr" aria-hidden="true">←</span></a>
+        </div>
+        <p class="note">فحص آلي للصفحة الرئيسية والملفات العامة فقط. الدرجة تقيس الجاهزية، ولا تضمن الظهور في إجابات الذكاء الاصطناعي.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -507,7 +550,7 @@ footer a:hover{color:var(--mint)}
       <span style="font-size:13px;color:#8FC3CC">الرياض · <span class="lat" style="font-style:italic">The Fourth Corner</span></span>
     </div>
     <div style="display:flex;gap:24px;flex-wrap:wrap">
-      <a href="./">الرئيسية</a><a href="./#services">الخدمات</a><a href="#check">قيّم موقعك</a><a href="#contact">تواصل</a>
+      <a href="./">الرئيسية</a><a href="./#services">الخدمات</a><a href="#check">افحص موقعك</a><a href="#contact">تواصل</a>
     </div>
     <span style="font-size:13px;color:#8FC3CC">© 2026 الزاوية الرابعة</span>
   </div>
@@ -528,56 +571,70 @@ footer a:hover{color:var(--mint)}
   var eng=$('#radar .eng'), ei=0;
   if(!reduce){ setInterval(function(){ eng.forEach(function(e){e.classList.remove('hit')}); eng[ei%eng.length].classList.add('hit'); ei++ },1200) }
 
-  /* self check */
-  var AX=[
-    {t:'وصول الزواحف',q:[
-      {id:'q1',w:15,p:'لا يحجب ملف robots.txt زواحف الذكاء الاصطناعي',s:'مثل GPTBot وClaudeBot وPerplexityBot',fix:'افتح ملف robots.txt وتأكد أنه لا يمنع زواحف الذكاء الاصطناعي.'},
-      {id:'q2',w:10,p:'لدى الموقع خريطة sitemap محدثة ومسجلة في Search Console',s:'',fix:'أنشئ خريطة موقع محدثة وسجلها في Search Console وBing.'}]},
-    {t:'محتوى يجيب',q:[
-      {id:'q3',w:15,p:'صفحاتك تجيب مباشرة على أسئلة عملائك الشائعة',s:'مثل: كم السعر؟ كم المدة؟ هل تخدمون مدينتي؟',fix:'أضف قسم أسئلة شائعة بإجابات قصيرة ومباشرة في صفحات الخدمات.'},
-      {id:'q4',w:10,p:'المحتوى يذكر أرقاماً وحقائق محددة',s:'أسعار تقريبية، مدد، مناطق خدمة، نتائج',fix:'استبدل العبارات العامة بأرقام وحقائق محددة يسهل الاستشهاد بها.'}]},
-    {t:'بنية مقروءة آلياً',q:[
-      {id:'q5',w:10,p:'لكل صفحة عنوان H1 واضح وعناوين فرعية مرتبة',s:'',fix:'رتّب العناوين: H1 واحد لكل صفحة، ثم H2 وH3 بتسلسل منطقي.'},
-      {id:'q6',w:10,p:'الموقع يستخدم بيانات منظمة Schema',s:'مثل Organization أو LocalBusiness أو FAQPage',fix:'أضف بيانات Schema تعرّف نشاطك وخدماتك وأسئلتك الشائعة.'}]},
-    {t:'وضوح الكيان',q:[
-      {id:'q7',w:10,p:'اسم نشاطك موحد بالعربي والإنجليزي في كل مكان',s:'الموقع، خرائط قوقل، الحسابات الاجتماعية',fix:'وحّد الاسم بالعربي والإنجليزي في الموقع وخرائط قوقل وكل الحسابات.'},
-      {id:'q8',w:10,p:'نشاطك مذكور في مصادر خارجية',s:'أدلة، مقالات، مراجعات، منصات متخصصة',fix:'ابنِ حضوراً في الأدلة والمنصات المتخصصة والمراجعات الموثوقة.'}]},
-    {t:'قابلية العرض واللغة',q:[
-      {id:'q9',w:5,p:'المحتوى يظهر كاملاً دون الاعتماد على JavaScript، والموقع سريع',s:'',fix:'تأكد أن النص الأساسي موجود في كود الصفحة، وحسّن سرعة التحميل.'},
-      {id:'q10',w:5,p:'المحتوى العربي مكتوب أصلاً بالعربية، والصفحة معرّفة كعربية',s:'وليس ترجمة آلية',fix:'راجع جودة المحتوى العربي وعرّف لغة الصفحة واتجاهها بشكل صحيح.'}]}
-  ];
-  var qs=document.getElementById('qs'), ans={}, total=0;
-  AX.forEach(function(a){
-    var d=document.createElement('div'); d.className='axis';
-    var h=document.createElement('h4'); h.innerHTML='<span class="gem"></span>'+a.t; d.appendChild(h);
-    a.q.forEach(function(q){
-      total++;
-      var r=document.createElement('div'); r.className='q';
-      r.innerHTML='<p>'+q.p+(q.s?'<small>'+q.s+'</small>':'')+'</p><div class="seg" role="group" aria-label="'+q.p+'"><button type="button" data-v="1" aria-pressed="false">نعم</button><button type="button" data-v="0" aria-pressed="false">لا</button><button type="button" data-v="u" aria-pressed="false">ما أعرف</button></div>';
-      $('button',r).forEach(function(b){ b.addEventListener('click',function(){ $('button',r).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')}); ans[q.id]=b.getAttribute('data-v'); upd(); }) });
-      d.appendChild(r);
-    });
-    qs.appendChild(d);
-  });
-
-  var fg=document.getElementById('fg'), sv=document.getElementById('sv'), band=document.getElementById('band'), prog=document.getElementById('prog'), gaps=document.getElementById('gaps'), send=document.getElementById('send'), site=document.getElementById('site'), shown=0;
-  function upd(){
-    var s=0,n=0,list=[];
-    AX.forEach(function(a){a.q.forEach(function(q){ var v=ans[q.id]; if(v!==undefined){n++} if(v==='1'){s+=q.w} else if(v!==undefined){list.push({q:q,u:v==='u'})} })});
-    list.sort(function(x,y){return y.q.w-x.q.w});
-    fg.setAttribute('stroke-dashoffset',String(100-s));
+  /* instant scan */
+  var SCAN_API = 'https://ai-scan.fourthcornersa.workers.dev/scan';
+  var WA = '966592018558';
+  var AXN = {access:'وصول الزواحف',answers:'محتوى يجيب',structure:'بنية مقروءة آلياً',entity:'وضوح الكيان',render:'قابلية العرض'};
+  var form=document.getElementById('scanForm'), site=document.getElementById('site'), btn=document.getElementById('scanBtn'), err=document.getElementById('scanErr'),
+      prog=document.getElementById('progress'), res=document.getElementById('result'), steps=$('.pstep'), timer=null;
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML}
+  function clean(v){ v=(v||'').trim(); if(!v) return ''; if(!/^https?:\/\//i.test(v)) v='https://'+v; try{ var u=new URL(v); return u.hostname.indexOf('.')>0?u.hostname:'' }catch(e){ return '' } }
+  function runSteps(){ var i=0; steps.forEach(function(s){s.className='pstep'}); steps[0].className='pstep on';
+    timer=setInterval(function(){ if(i<steps.length-1){ steps[i].className='pstep done'; i++; steps[i].className='pstep on' } },1400) }
+  function stopSteps(){ clearInterval(timer); steps.forEach(function(s){s.className='pstep done'}) }
+  function waLink(d,fails){ var m='مرحباً، أبغى التقرير الكامل للظهور في الذكاء الاصطناعي.\nالموقع: '+d.host+'\nدرجة الجاهزية: '+d.score+' من 100';
+    if(fails.length) m+='\nأهم الملاحظات:\n- '+fails.slice(0,3).map(function(c){return c.label}).join('\n- ');
+    return 'https://wa.me/'+WA+'?text='+encodeURIComponent(m) }
+  function show(d){
+    document.getElementById('rHost').textContent=d.host;
+    var s=d.score, fg=document.getElementById('fg'), sv=document.getElementById('sv');
     fg.style.stroke = s>=75?'#5DF8D8':(s>=45?'#6FD1D7':'#9FC3D6');
-    var from=shown, t0=null; shown=s;
-    function tick(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/600); sv.textContent=Math.round(from+(s-from)*p); if(p<1)requestAnimationFrame(tick) }
+    requestAnimationFrame(function(){ fg.setAttribute('stroke-dashoffset',String(100-s)) });
+    var t0=null; function tick(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/1100); sv.textContent=Math.round(s*p); if(p<1)requestAnimationFrame(tick) }
     reduce?(sv.textContent=s):requestAnimationFrame(tick);
-    prog.textContent=n+' من '+total+' أسئلة';
-    band.textContent = n===0?'ابدأ بالإجابة':(n<total?'أكمل الأسئلة لنتيجة أدق':(s>=75?'جاهزية جيدة، يبقى قياس الظهور':(s>=45?'جاهزية جزئية، فيه فجوات واضحة':'جاهزية ضعيفة، غالباً لا يُذكر موقعك')));
-    gaps.innerHTML='';
-    list.slice(0,3).forEach(function(g){ var li=document.createElement('li'); li.innerHTML='<b>'+(g.u?'يحتاج تحقق':'فجوة')+'</b>'+g.q.fix; gaps.appendChild(li) });
-    var msg='مرحباً، أبغى الفحص الكامل للظهور في الذكاء الاصطناعي.\nدرجة التقييم الذاتي: '+s+' من 100 ('+n+' من '+total+' أسئلة)'+(site.value.trim()?'\nالموقع: '+site.value.trim():'');
-    send.href='https://wa.me/966592018558?text='+encodeURIComponent(msg);
+    document.getElementById('band').textContent = s>=75?'جاهزية جيدة':(s>=45?'جاهزية جزئية، فيه فجوات واضحة':'جاهزية ضعيفة');
+    var ax=''; Object.keys(AXN).forEach(function(k){ if(d.axes[k]==null) return; ax+='<div class="axb"><span>'+AXN[k]+'</span><b>'+d.axes[k]+'%</b><i><em data-w="'+d.axes[k]+'"></em></i></div>' });
+    document.getElementById('axbars').innerHTML=ax;
+    setTimeout(function(){ $('.axb em').forEach(function(e){ e.style.width=e.getAttribute('data-w')+'%' }) },60);
+
+    var fails=d.checks.filter(function(c){return !c.ok && c.weight>0}).sort(function(a,b){return b.weight-a.weight});
+    var passed=d.checks.filter(function(c){return c.ok && c.weight>0}).length;
+    var html=fails.slice(0,3).map(function(c){ return '<li><i>✕</i><div><b>'+esc(c.label)+'</b><span>'+esc(c.fix)+'</span></div></li>' }).join('');
+    if(!fails.length) html='<li class="ok"><i>✓</i><div><b>لم نجد مشكلات في البنود الآلية</b><span>الخطوة التالية: قياس ظهورك الفعلي في إجابات المنصات.</span></div></li>';
+    document.getElementById('issues').innerHTML=html;
+    var rest=fails.length-3;
+    document.getElementById('more').textContent=(rest>0?'+'+rest+' ملاحظات أخرى في التقرير الكامل · ':'')+passed+' بنود سليمة';
+
+    var ai=d.ai, card=document.getElementById('aicard');
+    if(ai && !ai.error){
+      var T={known:'Gemini يعرفك ويستشهد بموقعك',partial:'Gemini يذكرك، لكن دون الاستشهاد بموقعك',unknown:'Gemini لا يعرف عنك ما يكفي'};
+      card.className='aicard'+(ai.verdict==='unknown'?' no':'');
+      document.getElementById('aiTitle').textContent=T[ai.verdict];
+      document.getElementById('aiQ').textContent='السؤال: '+ai.question;
+      document.getElementById('aiA').textContent=ai.excerpt?('«'+ai.excerpt+(ai.excerpt.length>=360?'…':'')+'»'):'لم يرجع Gemini إجابة.';
+      card.hidden=false;
+    } else card.hidden=true;
+
+    document.getElementById('send').href=waLink(d,fails);
+    res.hidden=false;
+    res.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   }
-  site.addEventListener('input',upd); upd();
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); err.textContent='';
+    var host=clean(site.value);
+    if(!host){ err.textContent='اكتب رابط موقع صحيح، مثل example.com'; site.focus(); return }
+    btn.disabled=true; res.hidden=true; prog.hidden=false; runSteps();
+    var ctl=('AbortController' in window)?new AbortController():null, to=setTimeout(function(){ ctl&&ctl.abort() },45000);
+    fetch(SCAN_API+'?url='+encodeURIComponent(host),ctl?{signal:ctl.signal}:{}).then(function(r){ return r.json().then(function(j){ if(!r.ok) throw new Error(j.error||'خطأ'); return j }) })
+      .then(function(d){
+        stopSteps();
+        if(!d.reachable){ err.textContent='ما قدرنا نوصل للموقع '+host+'. تأكد من الرابط، أو قد يكون الموقع يحجب الفحص الآلي.'; prog.hidden=true; return }
+        setTimeout(function(){ prog.hidden=true; show(d) },350);
+      })
+      .catch(function(x){ stopSteps(); prog.hidden=true; err.textContent=(x&&x.name==='AbortError')?'استغرق الفحص وقتاً أطول من المتوقع. جرّب مرة ثانية.':((x&&x.message&&x.message!=='Failed to fetch')?x.message:'تعذّر الفحص الآن. جرّب بعد قليل أو تواصل معنا عبر واتساب.') })
+      .then(function(){ clearTimeout(to); btn.disabled=false });
+  });
+  var pre=new URLSearchParams(location.search).get('url'); if(pre){ site.value=pre; setTimeout(function(){ form.requestSubmit?form.requestSubmit():form.dispatchEvent(new Event('submit')) },400) }
 
   /* cursor */
   var c=document.querySelector('.cur');
