@@ -170,6 +170,12 @@ section{position:relative}
 .c-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
 .c-blue .k,.c-blue .d{color:#DDF2F4}
 .c-blue .k .gem{background:var(--mint)}
+.span-12{grid-column:span 12}
+.case .case-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:end}
+.case h3{margin:0 0 12px;font-size:clamp(24px,2.6vw,34px);font-weight:400}
+.case .case-num{border-inline-start:1px solid rgba(111,209,215,.25);padding-inline-start:24px;display:flex;flex-direction:column;gap:10px}
+.case .num{font-size:clamp(56px,6vw,92px);color:var(--mint)}
+@media (max-width:980px){.case .case-grid{grid-template-columns:1fr}.case .case-num{border-inline-start:0;padding-inline-start:0;border-top:1px solid rgba(111,209,215,.25);padding-top:18px}}
 .span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}.span-7{grid-column:span 7}.span-6{grid-column:span 6}
 @media (max-width:980px){.res-grid>*{grid-column:span 12 !important}}
 .gems{display:flex;flex-wrap:wrap;gap:6px;direction:ltr;margin-top:auto}
@@ -282,20 +288,20 @@ footer a:hover{color:var(--mint)}
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="hero-in">
     <span class="logo" role="img" aria-label="الزاوية الرابعة" style="width:190px;height:44px;color:#fff"></span>
-    <span class="badge"><span class="gem"></span>متاحون لمشاريع جديدة</span>
-    <h1 class="display">نخفّض تكلفة عميلك،<br><b>ونرفع <span class="accent">ظهورك.</span></b></h1>
-    <p>زاويتان نتقنهما: إدارة الحملات الإعلانية وتحسين محركات البحث. كل قرار نأخذه مبني على الأرقام.</p>
+    <span class="badge"><span class="gem"></span>نستقبل مشاريع جديدة</span>
+    <h1 class="display">نرى ما لا يُرى،<br><b>ونحوّله إلى <span class="accent">نموّ.</span></b></h1>
+    <p>نبني متجرك الإلكتروني، ونقود إليه العملاء عبر الحملات الإعلانية وتحسين محركات البحث، ونقيس كل خطوة بالأرقام.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
       <a class="btn btn-light" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener">احجز استشارة <span class="arr" aria-hidden="true">←</span></a>
-      <a class="btn btn-ghost" href="#results">شوف النتائج</a>
+      <a class="btn btn-ghost" href="#results">اطّلع على النتائج</a>
     </div>
   </div>
   <div class="hero-strip">
-    <span class="lbl">أدوات نشتغل عليها كل يوم لنقرأ السوق ونحرّك الأرقام</span>
+    <span class="lbl">أدواتٌ نقرأ بها السوق كل يوم، ونحرّك بها الأرقام</span>
     <div class="marq" aria-hidden="true">
       <div class="marq-in">
-        <span>Google Ads</span><i class="gem"></i><span>Meta Ads</span><i class="gem"></i><span>TikTok Ads</span><i class="gem"></i><span>Snapchat Ads</span><i class="gem"></i><span>Google Analytics</span><i class="gem"></i><span>Search Console</span><i class="gem"></i><span>Semrush</span><i class="gem"></i><span>PageSpeed</span><i class="gem"></i>
-        <span>Google Ads</span><i class="gem"></i><span>Meta Ads</span><i class="gem"></i><span>TikTok Ads</span><i class="gem"></i><span>Snapchat Ads</span><i class="gem"></i><span>Google Analytics</span><i class="gem"></i><span>Search Console</span><i class="gem"></i><span>Semrush</span><i class="gem"></i><span>PageSpeed</span><i class="gem"></i>
+        <span>سلة · Salla</span><i class="gem"></i><span>زد · Zid</span><i class="gem"></i><span>Google Ads</span><i class="gem"></i><span>Meta Ads</span><i class="gem"></i><span>TikTok Ads</span><i class="gem"></i><span>Snapchat Ads</span><i class="gem"></i><span>Google Analytics</span><i class="gem"></i><span>Search Console</span><i class="gem"></i><span>Semrush</span><i class="gem"></i><span>PageSpeed</span><i class="gem"></i>
+        <span>سلة · Salla</span><i class="gem"></i><span>زد · Zid</span><i class="gem"></i><span>Google Ads</span><i class="gem"></i><span>Meta Ads</span><i class="gem"></i><span>TikTok Ads</span><i class="gem"></i><span>Snapchat Ads</span><i class="gem"></i><span>Google Analytics</span><i class="gem"></i><span>Search Console</span><i class="gem"></i><span>Semrush</span><i class="gem"></i><span>PageSpeed</span><i class="gem"></i>
       </div>
     </div>
   </div>
@@ -309,9 +315,9 @@ footer a:hover{color:var(--mint)}
     <div class="sec-head rv">
       <div style="display:flex;flex-direction:column;gap:18px">
         <span class="eyebrow"><span class="gem"></span>زاويتنا في العمل</span>
-        <h2 class="display h2">كل بيانات تملكها،<br><b>كل منصة يتواجد فيها عميلك.</b></h2>
+        <h2 class="display h2">من بياناتك نبدأ،<br><b>وإلى عميلك نصل.</b></h2>
       </div>
-      <p class="lead">نقرأ بياناتك من مصادرها، نحدد الزاوية اللي تجيب العميل الصح، ثم نحرّك الحملات والمحتوى على كل منصة يتواجد فيها جمهورك.</p>
+      <p class="lead">نقرأ بياناتك من منابعها، ونستخلص منها الزاوية التي تقود إليك العميل المناسب، ثم نُطلق الحملات والمحتوى حيث يوجد جمهورك.</p>
     </div>
 
     <div class="diagram rv">
@@ -324,12 +330,12 @@ footer a:hover{color:var(--mint)}
           <span class="chip src"><i class="gem"></i>Search Console</span>
           <span class="chip src"><i class="gem"></i>Semrush</span>
           <span class="chip src"><i class="gem"></i>بيانات الحملات</span>
-          <span class="chip src"><i class="gem"></i>المنافسين</span>
+          <span class="chip src"><i class="gem"></i>المنافسون</span>
         </div>
         <div class="dg-col" data-side="tag1">
           <span class="dg-cap">&nbsp;</span>
           <span class="chip tag">سلوك الزوار</span>
-          <span class="chip tag">فرص الكلمات</span>
+          <span class="chip tag">فرص البحث</span>
           <span class="chip tag">فجوات المحتوى</span>
           <span class="chip tag">تكلفة التحويل</span>
           <span class="chip tag">زوايا المنافسة</span>
@@ -371,9 +377,9 @@ footer a:hover{color:var(--mint)}
     <div class="sec-head rv">
       <div style="display:flex;flex-direction:column;gap:18px">
         <span class="eyebrow"><span class="gem"></span>كيف نعمل</span>
-        <h2 class="display h2">أربع خطوات،<br><b>دورة لا تتوقف.</b></h2>
+        <h2 class="display h2">أربع خطوات،<br><b>ودائرة لا تنغلق.</b></h2>
       </div>
-      <p class="lead">كل حملة تعلّمنا شي جديد. نقيس، نحسّن، ونرجع نبدأ الدورة بزاوية أدق.</p>
+      <p class="lead">كل حملة تضيف إلى معرفتنا درسًا جديدًا؛ نقيس ونحسّن، ثم نعود إلى البداية بزاوية أدق.</p>
     </div>
     <div class="orbit-wrap">
       <div class="orbit rv" id="orbit" aria-hidden="true">
@@ -389,10 +395,10 @@ footer a:hover{color:var(--mint)}
         <div class="node" style="left:12.5%;top:50%"><i></i><small>04</small><span>نقيس ونحسّن</span></div>
       </div>
       <div class="steps rv" id="steps">
-        <div class="step" tabindex="0"><span class="n">01</span><div><h3>نفهم</h3><p>العلامة والجمهور والمنافسين، وأين يضيع العميل اليوم.</p></div><span class="bar"><i></i></span></div>
-        <div class="step" tabindex="0"><span class="n">02</span><div><h3>نحدد الزاوية</h3><p>الرسائل والكلمات اللي تجيب العميل الصح، بتكلفة أقل.</p></div><span class="bar"><i></i></span></div>
-        <div class="step" tabindex="0"><span class="n">03</span><div><h3>ننفّذ</h3><p>الحملات على كل منصة، وتحسينات الموقع والمحتوى.</p></div><span class="bar"><i></i></span></div>
-        <div class="step" tabindex="0"><span class="n">04</span><div><h3>نقيس ونحسّن</h3><p>تقارير واضحة، وقرارات مبنية على الأرقام، ثم دورة جديدة.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">01</span><div><h3>نفهم</h3><p>ندرس العلامة والجمهور والمنافسين، ونتتبّع المواضع التي يضيع فيها العميل.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">02</span><div><h3>نحدد الزاوية</h3><p>نصوغ الرسائل ونختار الكلمات التي تجذب العميل المناسب بأقل كلفة.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">04</span><div><h3>ننفّذ</h3><p>نُطلق الحملات على كل منصة، ونحسّن الموقع والمحتوى.</p></div><span class="bar"><i></i></span></div>
+        <div class="step" tabindex="0"><span class="n">05</span><div><h3>نقيس ونحسّن</h3><p>نقرأ النتائج بوضوح، ونتخذ القرار بالأرقام، ثم نبدأ دورة جديدة.</p></div><span class="bar"><i></i></span></div>
       </div>
     </div>
   </div>
@@ -406,23 +412,34 @@ footer a:hover{color:var(--mint)}
         <span class="eyebrow"><span class="gem"></span>النتائج</span>
         <h2 class="display h2">أرقام،<br><b>لا وعود.</b></h2>
       </div>
-      <p class="lead">حملات إعلانية في قطاع شديد المنافسة، وتحسين محركات البحث لموقع خدمي واسع الانتشار.</p>
+      <p class="lead">حملات إعلانية في قطاعات شديدة المنافسة، وتحسين محركات البحث لموقع خدمي واسع الانتشار.</p>
     </div>
 
     <div class="res-grid">
-      <article class="card c-navy span-5 rv" data-count>
-        <span class="k"><i class="gem"></i>تكلفة التحويل · قطاع التجزئة</span>
-        <span class="num"><span data-from="24" data-to="4">4</span><small>ريال</small></span>
-        <p class="d">لكل تحويل، في قطاع شديد المنافسة.</p>
+      <article class="card c-navy span-12 rv case" data-count>
+        <span class="k"><i class="gem"></i>دراسة حالة · عميل يقدّم خدماته عن بُعد</span>
+        <div class="case-grid">
+          <div class="case-txt">
+            <h3>من إعلانٍ عابر، إلى عقدٍ موقّع.</h3>
+            <p class="d">أعدنا بناء حملاته على إنستقرام وتيك توك من الصفر: رسائل أوضح، واستهداف أدق، ومحادثات واتساب تصل إلى فريقه مباشرة. وكل ذلك بإنفاق إعلاني إجمالي لم يتجاوز 1,817 ريالًا.</p>
+          </div>
+          <div class="case-num">
+            <span class="num"><span data-from="0" data-to="45">45</span><small>ألف ريال</small></span>
+            <p class="d">قيمة عقدين وقّعهما العميل في الشهر الأول من الحملة: 40 ألفًا و5 آلاف ريال.</p>
+          </div>
+          <div class="case-num">
+            <span class="num"><span data-from="0" data-to="24">24</span>×</span>
+            <p class="d">عائدًا على الإنفاق الإعلاني؛ فكل ريال أُنفق على الإعلان عاد بنحو 25 ريالًا.</p>
+          </div>
+        </div>
       </article>
-      <article class="card c-blue span-4 rv" data-count>
-        <span class="k"><i class="gem"></i>العائد على الإنفاق <span class="lat">ROAS</span></span>
+      <article class="card c-mint span-6 rv" data-count>
+        <span class="k"><i class="gem"></i>العائد على الإنفاق <span class="lat">ROAS</span> · قطاع التجزئة</span>
         <span class="num">+<span data-from="0" data-to="40">40</span>%</span>
-        <div class="gems" data-gems="14" data-base="10"></div>
-        <span class="legend"><span>كل معيّن = 10%</span><span><b>المعيّن الفاتح</b> = فوق متوسط السوق</span></span>
+        <p class="d">أعلى من متوسط السوق، بإدارة الحملات وكتابة الرسائل الإعلانية وتحسين التكلفة.</p>
       </article>
-      <article class="card c-mint span-3 rv" data-count>
-        <span class="k"><i class="gem"></i>المبيعات</span>
+      <article class="card c-blue span-6 rv" data-count>
+        <span class="k"><i class="gem"></i>المبيعات · قطاع التجزئة</span>
         <span class="num">+<span data-from="0" data-to="40">40</span>%</span>
         <p class="d">زيادة في المبيعات عبر الحملات.</p>
       </article>
@@ -446,9 +463,9 @@ footer a:hover{color:var(--mint)}
         <div class="terms" id="terms"></div>
       </article>
 
-      <article class="card span-4 rv"><span class="k"><i class="gem"></i>تجربة الزائر</span><h3 style="margin:0;font-size:22px;font-weight:500">خفض معدل الارتداد</h3><p class="d">زائر يتفاعل بدل ما يغادر.</p></article>
+      <article class="card span-4 rv"><span class="k"><i class="gem"></i>تجربة الزائر</span><h3 style="margin:0;font-size:22px;font-weight:500">خفض معدل الارتداد</h3><p class="d">زائرٌ يتفاعل بدل أن يغادر.</p></article>
       <article class="card span-4 rv"><span class="k"><i class="gem"></i>الثقة</span><h3 style="margin:0;font-size:22px;font-weight:500">رفع سلطة الموقع</h3><p class="d">موثوقية أعلى أمام محركات البحث.</p></article>
-      <article class="card span-4 rv"><span class="k"><i class="gem"></i>الأداء</span><h3 style="margin:0;font-size:22px;font-weight:500">تحسين سرعة الموقع</h3><p class="d">على المكتب والجوال.</p></article>
+      <article class="card span-4 rv"><span class="k"><i class="gem"></i>الأداء</span><h3 style="margin:0;font-size:22px;font-weight:500">تحسين سرعة الموقع</h3><p class="d">على الحاسوب والجوال.</p></article>
     </div>
   </div>
 </section>
@@ -459,17 +476,27 @@ footer a:hover{color:var(--mint)}
     <div class="sec-head rv">
       <div style="display:flex;flex-direction:column;gap:18px">
         <span class="eyebrow"><span class="gem"></span>الخدمات</span>
-        <h2 class="display h2">زاويتان،<br><b>نتقنهما.</b></h2>
+        <h2 class="display h2">من المتجر،<br><b>إلى العميل.</b></h2>
       </div>
-      <p class="lead">ما نسوي كل شي. نسوي شيئين ونعطيهم كل وقتنا.</p>
+      <p class="lead">نبني المتجر، ونقود إليه الزوار، ونحوّلهم إلى عملاء، ونقيس كل خطوة بالأرقام.</p>
     </div>
     <div class="acc rv" id="acc">
       <div class="acc-item on" tabindex="0" role="button" aria-expanded="true">
-        <span class="vt">إدارة الحملات الإعلانية</span>
+        <span class="vt">تصميم وإدارة المتاجر الإلكترونية</span>
         <div class="body">
           <span class="n">01</span>
+          <h3>تصميم وإدارة المتاجر الإلكترونية</h3>
+          <p>نصمم متجرك على <b style="color:#fff;font-weight:500">سلة</b> أو <b style="color:#fff;font-weight:500">زد</b> من الصفر، ونديره بعد الإطلاق: المنتجات، والعروض، وتجربة الشراء، ونربطه بالحملات الإعلانية.</p>
+          <div class="tags"><span>سلة</span><span>زد</span><span>تصميم المتجر</span><span>إدارة المنتجات</span><span>تجربة الشراء</span><span>ربط الإعلانات</span></div>
+          <svg class="mk" width="44" height="52" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
+        </div>
+      </div>
+      <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
+        <span class="vt">إدارة الحملات الإعلانية</span>
+        <div class="body">
+          <span class="n">02</span>
           <h3>إدارة الحملات الإعلانية</h3>
-          <p>نكتب الرسائل، نختبر الزوايا والجماهير، ونخفض تكلفة التحويل حملة بعد حملة.</p>
+          <p>نكتب الرسائل، ونختبر الزوايا والجماهير، ونخفّض كلفة التحويل حملةً بعد حملة.</p>
           <div class="tags"><span>Google</span><span>Meta</span><span>TikTok</span><span>Snapchat</span><span>كتابة إعلانية</span><span>اختبار الزوايا</span></div>
           <svg class="mk" width="44" height="52" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
         </div>
@@ -477,9 +504,9 @@ footer a:hover{color:var(--mint)}
       <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
         <span class="vt">تحسين محركات البحث</span>
         <div class="body">
-          <span class="n">02</span>
+          <span class="n">03</span>
           <h3>تحسين محركات البحث</h3>
-          <p>بحث الكلمات المفتاحية، تحسين المحتوى والبنية، ورفع سلطة الموقع حتى يوصلك العميل بدون إعلان.</p>
+          <p>بحث الكلمات المفتاحية، تحسين المحتوى والبنية، ورفع سلطة الموقع حتى يصل إليك العميل دون إعلان.</p>
           <div class="tags"><span>الكلمات المفتاحية</span><span>المحتوى</span><span>سلطة الموقع</span><span>تقارير دورية</span></div>
           <svg class="mk" width="44" height="52" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="1.5" x2="11" y2="1.5"/><line x1="8" y1="5" x2="14" y2="5"/><line x1="5.5" y1="8.5" x2="16.5" y2="8.5"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="1.5" y1="15.5" x2="20.5" y2="15.5"/><line x1="4.5" y1="19" x2="17.5" y2="19"/><line x1="8" y1="22.5" x2="14" y2="22.5"/></svg>
         </div>
@@ -487,27 +514,27 @@ footer a:hover{color:var(--mint)}
       <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
         <span class="vt">تجربة الزائر</span>
         <div class="body">
-          <span class="n">03</span>
+          <span class="n">04</span>
           <h3>تجربة الزائر</h3>
-          <p>نخفض معدل الارتداد ونخلي الزائر يكمل رحلته إلى التواصل أو الشراء.</p>
+          <p>نخفّض معدل الارتداد، ونمهّد للزائر طريقه حتى التواصل أو الشراء.</p>
           <div class="tags"><span>معدل الارتداد</span><span>رحلة العميل</span><span>صفحات الهبوط</span></div>
         </div>
       </div>
       <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
         <span class="vt">سرعة الموقع</span>
         <div class="body">
-          <span class="n">04</span>
+          <span class="n">05</span>
           <h3>سرعة الموقع</h3>
-          <p>صفحات أسرع على المكتب والجوال، لأن كل ثانية تأخير تكلفك عملاء.</p>
+          <p>صفحات أسرع على الحاسوب والجوال؛ فكل ثانية تأخير قد تكلّفك عميلًا.</p>
           <div class="tags"><span>PageSpeed</span><span>الجوال</span><span>Core Web Vitals</span></div>
         </div>
       </div>
       <div class="acc-item" tabindex="0" role="button" aria-expanded="false">
         <span class="vt">تقارير واضحة</span>
         <div class="body">
-          <span class="n">05</span>
+          <span class="n">06</span>
           <h3>تقارير واضحة</h3>
-          <p>أرقام مفهومة، وقرار واضح بعد كل تقرير. بدون مصطلحات تضيّعك.</p>
+          <p>أرقام مفهومة، وقرار واضح بعد كل تقرير، دون مصطلحات تُربكك.</p>
           <div class="tags"><span>Google Analytics</span><span>Search Console</span><span>لوحات أداء</span></div>
         </div>
       </div>
@@ -521,7 +548,7 @@ footer a:hover{color:var(--mint)}
     <div class="rv" style="display:flex;flex-direction:column;gap:18px">
       <span class="eyebrow"><span class="gem"></span>من نحن</span>
       <h2 class="display">لكل مثلث <b>زاوية رابعة…</b><br>نكتشفها لك!</h2>
-      <p class="lead" style="margin:0;font-size:17px;line-height:1.9;font-weight:300;color:var(--muted);max-width:460px">كل مثلث له ثلاث زوايا: المنتج والعميل والمنافس. نحن الزاوية الرابعة، الرؤية اللي تربطها ببعض وتحوّلها إلى ظهور ومبيعات.</p>
+      <p class="lead" style="margin:0;font-size:17px;line-height:1.9;font-weight:300;color:var(--muted);max-width:460px">لكل مثلث ثلاث زوايا: المنتج، والعميل، والمنافس. ونحن الزاوية الرابعة: الرؤية التي تجمعها، وتحوّلها إلى حضور ومبيعات.</p>
     </div>
     <div class="tri rv" id="tri" tabindex="0" role="img" aria-label="مثلث تظهر له زاوية رابعة عند المرور عليه">
       <svg viewBox="0 0 400 400">
@@ -546,7 +573,7 @@ footer a:hover{color:var(--mint)}
       <span style="display:flex;flex-direction:column;gap:10px;max-width:640px">
         <span class="eyebrow" style="color:var(--aqua)"><span class="gem" style="background:var(--mint)"></span>خدمة جديدة</span>
         <span class="display" style="font-size:clamp(26px,3.2vw,40px)">حين يجيب الذكاء الاصطناعي، <b>هل يذكرك؟</b></span>
-        <span style="color:#B5DDE2;font-weight:300;line-height:1.8">اكتب رابط موقعك، واعرف فوراً هل ChatGPT وGemini وPerplexity يقدرون يقرؤونه ويفهمونه.</span>
+        <span style="color:#B5DDE2;font-weight:300;line-height:1.8">اكتب رابط موقعك، واعرف فورًا: هل يستطيع ChatGPT وGemini وPerplexity قراءته وفهمه؟</span>
       </span>
       <span class="btn btn-light">افحص موقعك <span class="arr" aria-hidden="true">←</span></span>
     </a>
@@ -558,7 +585,7 @@ footer a:hover{color:var(--mint)}
   <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
   <div class="cta-in">
     <span class="eyebrow"><span class="gem"></span>تواصل</span>
-    <h2 class="display">لنكتشف<br><b>زاويتك الجديدة؟</b></h2>
+    <h2 class="display">لنكتشف معًا<br><b>زاويتك الرابعة.</b></h2>
     <div class="row">
       <a class="btn btn-light" href="https://cardpass.co/4thcorner/book" target="_blank" rel="noopener">احجز موعدك <span class="arr" aria-hidden="true">←</span></a>
       <a class="btn btn-ghost" href="https://wa.me/966592018558" target="_blank" rel="noopener">واتساب</a>
